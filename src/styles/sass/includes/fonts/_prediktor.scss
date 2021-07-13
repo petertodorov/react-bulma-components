@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Barlow Regular'),
+       url('#{$prediktor-font-path}/Barlow-Regular.woff') format('woff'),
+       url('#{$prediktor-font-path}/Barlow-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Barlow'),
+       url('#{$prediktor-font-path}/Barlow-Medium.woff') format('woff'),
+       url('#{$prediktor-font-path}/Barlow-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Barlow SemiBold'),
+       url('#{$prediktor-font-path}/Barlow-SemiBold.woff') format('woff'),
+       url('#{$prediktor-font-path}/Barlow-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+font-family: 'Barlow';
+font-style: normal;
+font-weight: 700;
+src: local('Barlow Bold'),
+     url('#{$prediktor-font-path}/Barlow-Bold.woff') format('woff'),
+     url('#{$prediktor-font-path}/Barlow-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Barlow Bold'),
+       url('#{$prediktor-font-path}/Barlow-ExtraBold.woff') format('woff'),
+       url('#{$prediktor-font-path}/Barlow-ExtraBold.ttf') format('truetype');
+  }

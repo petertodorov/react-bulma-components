@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+// Theme
+$prediktor-theme: true;
+
+// Font
+$family-sans-serif: 'Barlow', sans-serif;
+$prediktor-font-path: '/src/styles/fonts/Barlow';
+@import '../../includes/fonts/prediktor';
+
+// Colors
+$red-dark: #eb5a55;
+$red: #ef7a76;
+$red-light: #f39c98;
+$red-lighter: #f7bdbb;
+$red-lightest: #fbdedd;
+
+$black: #27333b;
+$black-bis: darken($black, 14%);
+$black-ter: darken($black, 7%);
+$grey-darker: #525c62;
+$grey-darkest: darken($grey-darker, 10%);
+$grey-dark: #7d8589;
+$grey: #a9adb1;
+$grey-light: #d4d6d8;
+$grey-lighter: #e8e6e2;
+$grey-lightest: lighten($grey-lighter, 5%);
+$white-ter: #fbf9f9;
+$white-bis: hsl(0, 0%, 98%);
+
+$blue-dark: #0f5caf;
+$blue-darker: darken($blue-dark, 2.5%);
+$blue: #3f7dbf;
+$blue-light: #6f9dcf;
+$blue-lighter: #9fbedf;
+$blue-lightest: #cfdeef;
+
+$yellow-dark: #fcb560;
+$yellow: #fdc480;
+$yellow-light: #fdd3a0;
+$yellow-lighter: #fee1c0;
+$yellow-lightest: #fef0df;
+
+$green-darker: #085c5e;
+$green-dark: #0fb1b6;
+$green: #3fc1c5;
+$green-light: #6fd0d3;
+$green-lighter: #9fe0e2;
+$green-lightest: #cfeff0;
+
+$skyblue-dark: #00aeef;
+$skyblue: #33bef2;
+$skyblue-light: #66cef5;
+$skyblue-lighter: #99dff9;
+$skyblue-lightest: #cceffc;
+
+$livid-dark: #5a6e85;
+$livid: #7b8b9d;
+$livid-light: #9ca8b6;
+$livid-lighter: #bdc5ce;
+$livid-lightest: #dee2e7;
+
+$purple-dark: #b372bd;
+$purple: #c28eca;
+$purple-light: #d1aad7;
+$purple-lighter: #e1c7e4;
+$purple-lightest: #f0e3f2;
+
+// Accessability in dark mode
+$blue-darkMode: #47a0ff;
+$green-darkMode: #70bdc1;
+$red-darkMode: #ff7b75;
+
+// Update Bulma's global variables
+$primary-dark: $blue-darker;
+$primary: $blue-dark;
+$primary-var: $blue;
+$primary-light: $blue-light;
+$primary-lighter: $blue-lighter;
+$primary-lightest: $blue-lightest;
+$primary-darkMode: $blue-darkMode;
+$info: $skyblue-dark;
+$info-light: $skyblue-light;
+$info-lighter: $skyblue-lighter;
+$info-lightest: $skyblue-lightest;
+$warning: $yellow-dark;
+$success-dark: $green-darker;
+$success: $green-dark;
+$success-light: $green;
+$success-lighter: $green-lighter;
+$success-lightest: $green-lightest;
+$success-darkMode: $green-darkMode;
+$danger: $red-dark;
+$danger-darkMode: $red-darkMode;

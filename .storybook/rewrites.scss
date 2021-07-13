@@ -1,4 +1,3 @@
-
 pre code {
   color: currentColor;
 }
@@ -21,13 +20,22 @@ pre code .plain-text {
   color: #da1039;
 }
 
-pre code .number{
+pre code .number {
   padding: unset;
   min-width: unset;
   font-size: unset;
   height: unset;
 }
 
-$custom-colors: ("brand": (#8A4D76, #FFF), "custom": (#f88fa1,#000));
+$custom-colors: (
+  'brand': (
+    #8a4d76,
+    #fff,
+  ),
+  'custom': (
+    #f88fa1,
+    #000,
+  ),
+);
 
-@import "~bulma/bulma.sass";
+@import 'styles/sass/branding/prediktor/prediktor-light';

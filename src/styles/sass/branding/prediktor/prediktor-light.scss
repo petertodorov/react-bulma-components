@@ -1,0 +1,63 @@
+@import '../commons.scss';
+@import 'variables.scss';
+
+// OVERITING GLOBAL VARIABLES
+// * General colors
+$body-background-color: $white-ter;
+$shadow: 0px 0px 10px rgba($black, 0.3);
+$box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08),
+  0 1px 3px 1px rgba(60, 64, 67, 0.16);
+
+//* Text colors
+$text: $black;
+$link: $primary;
+$light: $grey-lighter;
+
+//* Code colors
+$code-background: rgba($grey-lighter, 0.5);
+
+// Panel
+$panel-block-color: $black;
+
+// Form
+$label-weight: normal;
+
+// Input
+$input-icon-active-color: darken($grey-light, 5%);
+$input-placeholder-color: $grey;
+$input-icon-color: $grey;
+$input-icon-active-color: $grey-dark;
+
+// Card
+$card-header-shadow: 0 0.05em 0em rgba(39, 51, 59, 0.1);
+$card-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08),
+  0 1px 3px 1px rgba(60, 64, 67, 0.16);
+
+// Table
+$table-background-color: transparent;
+$table-row-active-color: $text;
+$table-row-active-background-color: rgba($primary, 0.15);
+
+// Tabs
+$tabs-link-color: $grey-dark;
+
+// Breadcrumbs
+$breadcrumb-item-color: rgba($text, 0.7);
+$breadcrumb-item-hover-color: $link;
+
+// Progress
+$progress-value-background-color: $blue;
+
+// Dropdown
+$dropdown-content-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08),
+  0 1px 3px 1px rgba(60, 64, 67, 0.16);
+
+// Content
+$content-heading-color: $text;
+
+// BULMA
+@import '~bulma/bulma.sass';
+
+// CUSTOM
+// $light-mode: true;
+// @import '../../includes/all.scss';
