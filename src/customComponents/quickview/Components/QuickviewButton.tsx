@@ -1,22 +1,22 @@
-import { DOMAttributes } from 'react'
+import React, { DOMAttributes } from 'react';
 
-import { Button } from '../../components/Bulma/Elements/Button/Button'
-import { getIconComponent } from '../../utils/iconGenerator'
+import { Panel, Button, Icon } from '../../..';
+
 export interface QuickviewButtonProps {
-  dataTarget: string
-  dataShow: string
-  className?: string
-  label?: string
-  icon?: string
+  dataTarget: string;
+  dataShow: string;
+  className?: string;
+  label?: string;
+  icon?: string;
 }
 
 const handleClick = (dataTarget: string) => {
-  const quickview = document.querySelector(`#${dataTarget}`)
+  const quickview = document.querySelector(`#${dataTarget}`);
   if (quickview?.classList.contains('is-active')) {
-    return quickview?.classList.remove('is-active')
+    return quickview?.classList.remove('is-active');
   }
-  return quickview?.classList.add('is-active')
-}
+  return quickview?.classList.add('is-active');
+};
 export const QuickviewButton: React.FC<QuickviewButtonProps> &
   DOMAttributes<HTMLButtonElement> = ({
   dataTarget,
@@ -28,13 +28,18 @@ export const QuickviewButton: React.FC<QuickviewButtonProps> &
   return (
     <Button
       className={className}
-      label={label}
-      icon={icon ? getIconComponent(icon) : undefined}
       data-target={dataTarget}
       data-show={dataShow}
       onClick={() => {
-        handleClick(dataTarget)
+        handleClick(dataTarget);
       }}
-    />
-  )
-}
+    >
+      {icon && (
+        <Icon>
+          <i className={icon} />
+        </Icon>
+      )}
+      <span>{label}</span>
+    </Button>
+  );
+};

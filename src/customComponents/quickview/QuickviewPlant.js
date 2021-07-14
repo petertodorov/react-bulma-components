@@ -3,7 +3,7 @@ import { PanelBlockSignal } from './Components/PanelBlockSignal';
 import { PanelBlockExpander } from './Components/PanelBlockExpander.tsx';
 import { PanelBlockSelectAll } from './Components/PanelBlockSelectAll.tsx';
 
-import { Panel } from '../..';
+import { Panel, Tabs } from '../..';
 
 import { signalGroups } from './mockups';
 import { isAllChecked } from './utils/isAllChecked.js';
@@ -27,6 +27,14 @@ export const QuickviewPlant: React.FC<QuickviewProps> = ({
       className={`flex-column is-hidden-mobile quickview is-fixed is-top ${visible}`}
     >
       <Panel className="panel--styleless" renderAs="article">
+        <Tabs className="is-sticky is-top has-z-index-1  mb-0">
+          <li className="tab has-text-weight-medium is-active">
+            <span className=" is-clickable is-size-small">Signals</span>
+          </li>
+          <li className="tab has-text-weight-medium">
+            <span className=" is-clickable is-size-small">Parameters</span>
+          </li>
+        </Tabs>
         <PanelBlockSelectAll checked={checked} label={selectAllLabel} />
         <div ref={panelRef}>
           {signalGroups.map((group) => {
