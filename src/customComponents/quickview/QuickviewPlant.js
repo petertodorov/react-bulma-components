@@ -1,7 +1,4 @@
-import React, { useRef, useState } from 'react';
-import { PanelBlockSignal } from './Components/PanelBlockSignal';
-import { PanelBlockExpander } from './Components/PanelBlockExpander.tsx';
-import { PanelBlockSelectAll } from './Components/PanelBlockSelectAll.tsx';
+import React, { useState } from 'react';
 
 import { Panel, Tabs } from '../..';
 import { TabSignals } from './Components/Tabs/content/TabSignals';
