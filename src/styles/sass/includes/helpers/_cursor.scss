@@ -1,0 +1,39 @@
+.has-cursor {
+  &-ew-resizable { 
+    cursor: ew-resize;
+    position: relative;
+    width: 1px; 
+    > * { width: 1px; }
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+    &:before {
+      width: 3px;  
+      z-index: 1;
+    }
+    &:after {
+      width: 1px;
+      @if $dark-mode {
+        background: $grey-darker;
+      } @else {
+        background: $grey-lighter;
+      }
+    }
+    &:hover {
+      &:before {
+        @if $dark-mode {
+          background: rgba($white, 0.25);
+        } @else {
+          background: rgba($primary, 0.25);
+        }
+      }
+    }
+  }
+  &-copy { 
+    cursor: copy;
+  }
+}

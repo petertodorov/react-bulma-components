@@ -1,0 +1,12 @@
+.panel.tree {
+  &.relation {
+    .panel-heading {
+      display: block;
+    }
+  }
+  &.parent {
+    .panel-heading {
+      display: none;
+    }
+  }
+}

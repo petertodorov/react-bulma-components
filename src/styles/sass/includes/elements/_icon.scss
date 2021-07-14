@@ -1,0 +1,58 @@
+// Icons
+.icon {
+	&.is-smaller {
+		width: 1em;
+		height: 1em;
+	}
+	&.is-larger {
+		width: 4.5rem;
+		height: 4.5rem;
+	}
+	&.is-largest {
+		width: 6.5rem;
+		height: 6.5rem;
+	}
+	&.rotate-90 {
+		i {
+			@include transform(rotate(90deg));
+		}
+	}
+	&.rotate-45 {
+		i {
+			@include transform(rotate(45deg));
+		}
+	}
+}
+
+// SVG
+svg.symbol {
+	&--grafana {
+		@if $dark-mode {
+			path { fill: $white-ter; }
+		} @else {
+			path { fill: url(#grafana); }
+		}
+	}
+	&--scatec {
+		@if $dark-mode {
+			circle { fill: $white-ter; }
+			path { fill: $black-bis; }
+		} @else {
+			circle { fill: url(#scatec); }
+			path { fill: $white; }
+		}
+	}
+}
+
+// Font
+.fa {
+	&-xxs {
+	font-size: $size-11;
+	}
+	&-stack {
+		width: 2em;
+	}
+	&-stack-1x {
+		line-height: 2em !important;
+	}
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.894277,-1.36952e-15,1.37831e-15,0.900013,3,2.99987)">
+        <g id="tree">
+            <path d="M15.051,17.809L15.051,14.943C16.963,14.516 18.784,12.487 18.784,10.041C18.784,7.286 16.71,0 14.442,0C12.174,0 10.096,7.286 10.096,10.041C10.096,12.433 11.999,14.431 13.85,14.915L13.85,17.695C12.588,17.635 11.325,17.604 10.062,17.605C8.772,17.605 7.483,17.688 6.203,17.853L6.203,14.491C7.534,14.1 8.682,12.707 8.682,11.032C8.682,9.056 7.304,3.759 5.61,3.759C3.911,3.759 2.537,9.056 2.537,11.032C2.537,12.735 3.676,14.152 5.045,14.515L5.045,18.029C2.032,18.548 0,19.429 0,20L20.128,20C20.127,19.426 18.081,18.074 15.051,17.809Z"/>
+        </g>
+    </g>
+</svg>

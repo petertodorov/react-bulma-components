@@ -1,0 +1,31 @@
+@mixin gauge-color($donutColor, $arrowColor) {
+  .gauge {
+    &-donut {
+      stroke: $donutColor;
+    }
+    &-arrow {
+      fill: $arrowColor;
+    }
+    &-current {
+      stroke: $arrowColor;
+    }
+  }
+}
+
+.gauge {
+  &--1 {
+    @if $dark-mode {
+      @include gauge-color(rgba($white, 0.2), $primary-darkMode);
+    } @else {
+      @include gauge-color($white, $primary);
+    }
+  }
+
+  &--2 {
+    @if $dark-mode {
+      @include gauge-color(rgba($white, 0.2), $grey-light);
+    } @else {
+      @include gauge-color(rgba($black, 0.1), $primary);
+    }
+  }
+}

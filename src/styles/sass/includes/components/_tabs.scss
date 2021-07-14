@@ -1,0 +1,341 @@
+// Tabs without <a> for react purposes
+@mixin tab-without-a($tab-border, $tab, $tab-hover, $tab-border-active, $tab-active) {
+	.tab span.is-clickable {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		margin-bottom: -1px;
+		padding: 0.5em 1em;
+		vertical-align: top;
+	}
+	.tabs {
+		&:not(.is-toggle) {
+			.tab {
+				span.is-clickable {
+					border-bottom-color: transparent;
+					border-bottom-style: solid;
+					border-bottom-width: 1px;
+					color: $tab;
+					&:hover {
+				    border-bottom-color: $tab-border-active;
+				    color: $tab-hover;
+					}
+				}
+				&.is-active {
+					span.is-clickable {
+						border-bottom-color: $tab-border-active;
+						color: $tab-active;
+					}
+				}
+			}
+		}
+		&.is-toggle {
+			span.is-clickable {
+				border-color: $tabs-toggle-link-border-color;
+				border-style: $tabs-toggle-link-border-style;
+				border-width: $tabs-toggle-link-border-width;
+				margin-bottom: 0;
+				position: relative;
+				&:hover {
+					background-color: $tabs-toggle-link-hover-background-color;
+					border-color: $tabs-toggle-link-hover-border-color;
+					z-index: 2;
+				}
+			}
+			li {
+				&:first-child span.is-clickable {
+					border-top-left-radius: $tabs-toggle-link-radius;
+					border-bottom-left-radius: $tabs-toggle-link-radius;
+				}
+	      &:last-child span.is-clickable {
+					border-top-right-radius: $tabs-toggle-link-radius;
+					border-bottom-right-radius: $tabs-toggle-link-radius;
+				}
+	      &.is-active {
+					span.is-clickable {
+						background-color: $tabs-toggle-link-active-background-color;
+						border-color: $tabs-toggle-link-active-border-color;
+						color: $tabs-toggle-link-active-color;
+						z-index: 1;
+					}
+				}
+			}
+			&.is-toggle-rounded {
+				li {
+					&:first-child span.is-clickable {
+						border-bottom-left-radius: $radius-rounded;
+						border-top-left-radius: $radius-rounded;
+						padding-left: 1.25em;
+					}
+					&:last-child span.is-clickable {
+						border-bottom-right-radius: $radius-rounded;
+						border-top-right-radius: $radius-rounded;
+						padding-right: 1.25em;
+					}
+				}
+	  	}
+		}
+	}
+	.has-tabs {
+		.tabs ul {
+			border-bottom: none;
+			align-items: flex-start;
+		}
+		.tab {
+				span.is-clickable, a {
+				border-bottom: none;
+				border-top-color: transparent;
+				border-top-style: solid;
+				border-top-width: 1px;
+				&:hover {
+					border-top-color: $tab-border-active;
+				}
+			}
+			&.is-active {
+				span.is-clickable, a {
+					border-bottom-color: none;
+					border-top-color: $tab-border-active;
+				}
+			}
+		}
+	}
+}
+
+@if $dark-mode {
+	@include tab-without-a(
+		$tab-border: $black,
+		$tab: $grey,
+		$tab-hover: $white,
+		$tab-border-active: rgba(255, 255, 255, 0.7),
+		$tab-active: $white);
+} @else {
+	@include tab-without-a(
+		$tab-border: $grey-lighter,
+		$tab: $grey,
+		$tab-hover: $black,
+		$tab-border-active: $link,
+		$tab-active: $black
+	);
+}
+
+// Tabs on Portal as browser tabs
+@mixin tabs-browser($height: 2.6rem) {
+  .as-browser {
+  	&.has-navbar-fixed-top {
+      padding-top: 3.6rem !important;
+			&.is-shrinked {
+				padding-top: 1rem !important;
+				.as-browser.level {
+					top: 0;
+				}
+			}
+			&.has-composed-app {
+				padding-top: 9.2rem !important;
+			}
+    }
+  	&.navbar {
+  		min-height: $height;
+  		height: $height;
+			z-index: 99999;
+  		.navbar-brand,
+  		.navbar-tabs {
+  			min-height: $height;
+  			height: $height;
+  		}
+  		.navbar-brand .navbar-item {
+  			padding-bottom: 0;
+  			padding-top: 0;
+  		}
+  		.navbar-tabs {
+  			padding-top: 0.2rem;
+  			padding-right: 18px;
+				max-width: 80%;
+  			.navbar-item {
+          margin-left: 9px;
+    			margin-right: -9px;
+					position: relative;
+          line-height: 1;
+          border-radius: 9px 9px 0 0;
+					font-weight: 500;
+					a {
+						@if $light-mode {
+							color: $text;
+						}
+					}
+  				i {
+  					opacity: 0.7;
+  					@include transition();
+            &:after {
+							position: absolute;
+              content: "|";
+							@if $dark-mode {
+              	color: $grey-dark;
+							} @else {
+								color: $grey-light;
+							}
+              top: 10px;
+              left: -2px;
+              font-style: normal;
+            }
+  				}
+  				&:after, &:before {
+            content: "";
+  					opacity: 0;
+  					width: 9px;
+  					height: 100%;
+						position: absolute;
+  					bottom: -1px;
+  					background-repeat: no-repeat;
+  					@include transition();
+  				}
+  				&:before {
+						@if $dark-mode {
+							background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 10 11' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'><g transform='matrix(1,0,0,1,0.033764,4.77284)'><path d='M9.009,-4.773L9.009,6.082L-0.034,6.082L-0.034,4.082C4.466,4.082 8.966,0.582 8.966,-3.918C8.966,-4.207 8.981,-4.492 9.009,-4.773Z' style='fill:rgb(51,66,77);fill-rule:nonzero;'/></g></svg>");
+						} @else {
+							background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 10 11' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'><g transform='matrix(1,0,0,1,0.033764,4.77284)'><path d='M9.009,-4.773L9.009,6.082L-0.034,6.082L-0.034,4.082C4.466,4.082 8.966,0.582 8.966,-3.918C8.966,-4.207 8.981,-4.492 9.009,-4.773Z' style='fill:rgb(237,237,237);fill-rule:nonzero;'/></g></svg>");
+						}
+						background-position: left bottom;
+  					left: -8px;
+  				}
+  				&:after {
+						@if $dark-mode {
+							background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 10 11' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'><g transform='matrix(-1,0,0,1,9.0091,4.77284)'><path d='M9.009,-4.773L9.009,6.082L-0.034,6.082L-0.034,4.082C4.466,4.082 8.966,0.582 8.966,-3.918C8.966,-4.207 8.981,-4.492 9.009,-4.773Z' style='fill:rgb(51,66,77);fill-rule:nonzero;'/></g></svg>");
+  					} @else {
+							background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 10 11' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'><g transform='matrix(-1,0,0,1,9.0091,4.77284)'><path d='M9.009,-4.773L9.009,6.082L-0.034,6.082L-0.034,4.082C4.466,4.082 8.966,0.582 8.966,-3.918C8.966,-4.207 8.981,-4.492 9.009,-4.773Z' style='fill:rgb(237,237,237);fill-rule:nonzero;'/></g></svg>");
+						}
+						background-position: right bottom;
+  					right: -9px;
+  				}
+  			}
+        .navbar-item:hover,
+        .navbar-item.is-active {
+          z-index: 1;
+          i {
+            opacity: 1;
+            &:after {
+              display: none;
+            }
+          }
+        }
+  			.navbar-item:hover {
+					@if $dark-mode {
+  					background: rgba(lighten($black, 5%), 0.5);
+					} @else {
+						background: rgba($grey-lightest, 0.5);
+					}
+  				&:after, &:before {
+  					opacity: 0.5;
+  				}
+  			}
+  			.navbar-item.is-active {
+					@if $dark-mode {
+						background: lighten($black, 5%);
+					} @else {
+						background: $grey-lightest;
+					}
+  				&:after, &:before {
+  					opacity: 1;
+  				}
+  			}
+  		}
+  	}
+		&.composed-app {
+			top: $height;
+			@if $dark-mode {
+				background: lighten($black, 5%);
+			} @else {
+				background: $grey-lightest;
+			}
+			z-index: 99998;
+			height: 5.6rem;
+			.screen {
+				div {
+					display: flex;
+					height: 100%;
+					width: 100%;
+					position: absolute;
+					top: 0;
+					@if $dark-mode {
+						background: rgba($black, 0.8);
+					} @else {
+						background: rgba($white, 0.8);
+					}
+					text-align: center;
+					font-weight: 500;
+					outline: 1px solid transparent;
+					@include transition();
+					small {
+						@extend .is-align-self-center;
+						margin: auto;
+					}
+				}
+				&:hover {
+					div {
+						@if $dark-mode {
+							background: transparent;
+						}
+						outline: 1px solid $primary;
+						small {
+							@if $dark-mode {
+								text-shadow: 0 1px 0 $black-bis;
+							}
+						}
+					}
+				}
+				&.is-active,
+				&.is-active:hover {
+					div {
+						outline: 1px solid $primary;
+						@if $dark-mode {
+							background: rgba($black, 0.4);
+						} @else {
+							background: rgba($white, 0.4);
+						}
+					}
+					small {
+						visibility: visible;
+					}
+				}
+			}
+		}
+    &.level {
+			@if $dark-mode {
+				border-bottom: 1px solid $grey-darker;
+				background: lighten($black, 5%);
+				background: -webkit-linear-gradient(top, lighten($black, 5%), $black);
+				background: -moz-linear-gradient(top, lighten($black, 5%), $black);
+				background: -o-linear-gradient(top, lighten($black, 5%), $black);
+				background: linear-gradient(top, lighten($black, 5%), $black);
+			} @else {
+				border-bottom: 1px solid $grey-lighter;
+				background: $grey-lightest;
+				background: -webkit-linear-gradient(top, $grey-lightest, $grey-lighter);
+				background: -moz-linear-gradient(top, $grey-lightest, $grey-lighter);
+				background: -o-linear-gradient(top, $grey-lightest, $grey-lighter);
+				background: linear-gradient(top, $grey-lightest, $grey-lighter);
+			}  
+			top: $height;
+			left: 0;
+			position: fixed;
+			right: 0;
+			height: 1rem;
+			z-index: 99997;
+			&.has-composed-app {
+				top: 8.2rem;
+			}
+    }
+  }
+  @include from($tablet) {
+    .as-browser .navbar-tabs i {
+      margin-right: 6px;
+			vertical-align: middle;
+    }
+  }
+	@include until($tablet) {
+		.as-browser .navbar-brand > .navbar-tabs {
+			max-width: 60%;
+		}
+	}
+}
+
+@include tabs-browser();

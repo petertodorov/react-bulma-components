@@ -1,0 +1,223 @@
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: $primary;
+  color: $white;
+}
+
+.in {
+  &-dark-mode { @include in-dark-mode; }
+  &-light-mode { @include in-light-mode; }
+}
+
+.is {
+  &-borderless { border: 0 !important; }
+  &-transparent { background: transparent !important; } 
+  &-rounded { border-radius: $radius-rounded; }
+  &-clickable { @include transition(); }
+  &-unclickable { cursor: default; }
+  &-disabled { pointer-events: none; }
+  &-none { display: none !important; }
+  &-vcentered > * { vertical-align: middle; }
+  &-scrollable-y {
+    overflow-y: scroll !important;
+    &-touch {
+      @include touch {
+        overflow-y: scroll;
+      }
+    }
+    &-mobile {
+      @include mobile {
+        overflow-y: scroll;
+      }
+    }
+  }
+  &-scrollable-x { 
+    overflow-x: scroll;
+    &-touch {
+      @include touch {
+        overflow-y: scroll;
+      }
+    }
+    &-mobile {
+      @include mobile {
+        overflow-x: scroll;
+      }
+    }
+  }
+}
+
+.has {
+  &-text {
+    &-vcentered { vertical-align: middle; }
+    &-weight-extrabold { font-weight: 800; }
+    &-strong {
+      @if $dark-mode {
+        color: $white-ter !important;
+      } @else {
+        color: $black-ter !important;
+      }
+    }
+    &--inverted {
+      @if $dark-mode {
+        color: $black-ter !important;
+      } @else {
+        color: $white !important;
+      }
+    }
+  }
+  &-line-height-1 { line-height: 1; }
+  &-border {
+    &-dashed { border-style: dashed !important; }
+    &-solid { border-style: solid; }
+  }
+  &-background-stripes { @include stripes(); }
+  &-overflow {
+    &-hidden { overflow: hidden; }
+    &-y-hidden { overflow-y: hidden; }
+    &-x-hidden { overflow-x: hidden; }
+  }
+  &-shadow {
+    @if $dark-mode {
+      @include box-shadow(0px 0px 10px rgba($white, 0.3));
+    } @else {
+      @include box-shadow(0px 0px 10px rgba($black, 0.3));
+    }
+    &--small {
+      @if $dark-mode {
+        @include box-shadow(0px 0px 5px rgba($white, 0.3));
+      } @else {
+        @include box-shadow(0px 0px 5px rgba($black, 0.3));
+      }
+    }
+    &--smaller {
+      @include box-shadow($card-shadow);
+    }
+  }
+  &-radius {
+    border-radius: $radius;
+    &--left {
+      border-radius: $radius 0 0 $radius;
+    }
+    &--right {
+      border-radius: 0 $radius $radius 0;
+    }
+    &--top-left {
+      border-top-left-radius: $radius;
+    }
+    &--top-right {
+      border-top-right-radius: $radius;
+    }
+    &--bottom-left {
+      border-bottom-left-radius: $radius;
+    }
+    &--bottom-right {
+      border-bottom-right-radius: $radius;
+    }
+  }
+  &-z-index-1 { z-index: 1; }
+  &-arrow-right {
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      left: calc(100% - 20px);
+      width: 20px;
+      height: 250%;
+      background-repeat: no-repeat;
+      background-position: center;
+      @include is-y-centered();
+      @if $dark-mode {
+        background-image: url("data:image/svg+xml;utf8,<svg width='100%' height='100%' preserveAspectRatio='none' viewBox='0 0 23 70' xmlns='http://www.w3.org/2000/svg' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'><g transform='matrix(1,0,0,1,-1.22347,0)'><path d='M2.223,0L1.223,0L23,35L1.223,70L2.223,70L24,35L2.223,0Z' style='fill: rgba(255, 255, 255, 0.2)'/></g></svg>");
+      } @else {
+        background-image: url("data:image/svg+xml;utf8,<svg width='100%' height='100%' preserveAspectRatio='none' viewBox='0 0 23 70' xmlns='http://www.w3.org/2000/svg' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'><g transform='matrix(1,0,0,1,-1.22347,0)'><path d='M2.223,0L1.223,0L23,35L1.223,70L2.223,70L24,35L2.223,0Z' style='fill: rgba(0, 0, 0, 0.2)'/></g></svg>");
+      }
+    }
+  }
+  &-notification {
+    position: relative;
+    &:before,
+    &:after {
+      position: absolute;
+      content: "\f111";
+      font-family: $fontawesome;
+      font-weight: 900;
+    }
+    &:before {
+      z-index: 1;
+      color: $danger;
+      top: -2px;
+      right: -2px;
+      font-size: 8px;
+    }
+    &:after {
+      z-index: 0;
+      @if $dark-mode {
+        color: $black-ter;
+      } @else {
+        color: $white;
+      }
+      top: -3px;
+      right: -3px;
+      font-size: 10px;
+    }
+  }
+}
+
+img.is-rounded {
+  border-radius: $radius-rounded !important;
+}
+
+// Loader
+@mixin is-loading($borderColor, $bgColor) {
+  .is-loading:not(.control):not(.button):not(.select) {
+		position: relative;
+		height: 100%;
+    &:after  {
+      -webkit-animation: spinAround 500ms infinite linear;
+              animation: spinAround 500ms infinite linear;
+      border: 2px solid $borderColor;
+      border-radius: 290486px;
+      border-right-color: transparent;
+      border-top-color: transparent;
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1em;
+      width: 1em;
+      left: calc(50% - (1em / 2));
+      top: calc(50% - (1em / 2));
+			z-index: 101;
+    }
+		&:before {
+			background: $bgColor;
+			content: "";
+			height: 100%;
+			width: 100%;
+			left: 0;
+			top: 0;
+			z-index: 100;
+			position: absolute;
+		}
+  }
+	@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+		.is-loading:not(.control):not(.button)::before {
+			-webkit-backdrop-filter: blur(5px);
+			backdrop-filter: blur(5px);
+		}
+	}
+}
+
+@if $dark-mode {
+  @include is-loading (
+    $borderColor: $primary-darkMode,
+    $bgColor: rgba(0, 0, 0, 0.01)
+  );
+} @else {
+  @include is-loading (
+    $borderColor: $primary,
+    $bgColor: rgba(255, 255, 255, 0.01)
+  );
+}

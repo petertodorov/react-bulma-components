@@ -1,0 +1,41 @@
+// Linear Gradient helpers settings
+$gradient-light: $grey-lightest, transparent;
+$gradient-light-dark-mode: $black-bis, transparent;
+$gradient-lighter: $white-ter, rgba($white, 0.3);
+$gradient-lighter-dark-mode: $black-ter, rgba($black-ter, 0.3);
+
+$gradients-light-mode: (
+  $gradient-light: "light",
+  $gradient-lighter: "lighter",
+);
+$gradients-dark-mode: (
+  $gradient-light-dark-mode: "light",
+  $gradient-lighter-dark-mode: "lighter",
+);
+
+$gradient-direction: (left, right, top, bottom);
+
+@each $direction in $gradient-direction {
+  @each $property, $gradient in $gradients-light-mode {
+    .has-gradient-#{$direction}--#{$gradient} {
+      @include linear-gradient($direction, $property);
+    }
+  }
+  @each $property, $gradient in $gradients-dark-mode {
+    .has-gradient-#{$direction}--#{$gradient} {
+      @if $dark-mode {
+        @include linear-gradient($direction, $property);
+      }
+    }
+  }
+}
+
+// $gradient-opacity: rgba($black, 0.2), transparent;
+// $gradient-opacity-dark-mode: rgba($white, 0.3), transparent;
+
+// $gradients: (
+//   $gradient-opacity: "opacity",
+// );
+// $gradients-dark-mode: (
+//   $gradient-opacity-dark-mode: "opacity",
+// );

@@ -1,0 +1,19 @@
+.steps {
+  &-segment {
+    &.is-completed {
+      .heading {
+        color: $grey-dark;
+      }
+    }
+  }
+  &-content {
+    .heading {
+      @extend .has-text-weight-bold;
+    }
+    .value {
+      @extend .is-block;
+      font-size: 0.875em;
+      line-height: 140%;
+    }
+  }
+}

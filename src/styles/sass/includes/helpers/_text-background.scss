@@ -1,0 +1,96 @@
+// Color helpers settings
+@each $name, $pair in $custom-colors {
+  $light-mode-color: nth($pair, 1);
+  $dark-mode-color: nth($pair, 2);
+  .has-background-#{$name} {
+    @if $dark-mode {
+      background: #{$dark-mode-color} !important;
+    } @else {
+      background: #{$light-mode-color} !important;
+    }
+  }
+  .has-text-#{$name} {
+    @if $dark-mode {
+      color: #{$dark-mode-color} !important;
+    } @else {
+      color: #{$light-mode-color} !important;
+    }
+  }
+}
+
+// Dark/light mode helper settings 
+@each $name, $pair in $mode-colors {
+  $light-mode-color: nth($pair, 1);
+  $dark-mode-color: nth($pair, 2);
+  .has-background--#{$name} {
+    @if $dark-mode {
+      background: #{$dark-mode-color} !important;
+    } @else {
+      background: #{$light-mode-color} !important;
+    }
+  }
+  .has-text--#{$name} {
+    @if $dark-mode {
+      color: #{$dark-mode-color} !important;
+    } @else {
+      color: #{$light-mode-color} !important;
+    }
+  }
+}
+
+// Opacity helpers settings
+@each $name, $opacity-value in $opacities {
+  .has-background-opacity--#{$name} {
+    @if $dark-mode {
+      background: RGBA($dark-mode-opacity, #{$opacity-value}) !important;
+    } @else {
+      background: RGBA($light-mode-opacity, #{$opacity-value}) !important;
+    }
+  }
+  .has-text-opacity--#{$name} {
+    @if $dark-mode {
+      color: RGBA($dark-mode-opacity, #{$opacity-value});
+    } @else {
+      color: RGBA($light-mode-opacity, #{$opacity-value});
+    }
+  }
+}
+
+// Blurred bakground helpers settings
+@each $name, $pair in $blurred-background {
+  $light-mode-color: nth($pair, 1);
+  $dark-mode-color: nth($pair, 2);
+  .has-background-blurred--#{$name} {
+    @if $dark-mode {
+      background: #{$dark-mode-color} !important;
+    } @else {
+      background: #{$light-mode-color} !important;
+    }
+  }
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .has-background-blurred--#{$name} {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      @if $dark-mode {
+        background: #{$dark-mode-color} !important;
+      } @else {
+        background: #{$light-mode-color} !important;
+      }
+    }
+  }
+}
+
+// Background Hover
+@each $name, $pair in $background-hover {
+  $light-mode-color: nth($pair, 1);
+  $dark-mode-color: nth($pair, 2);
+  .is-hoverable--#{$name} {
+    &:hover, &.is-active {
+      @if $dark-mode {
+        background-color: $dark-mode-color !important;
+      } @else {
+        background-color: $light-mode-color !important;
+      }
+    }
+  }
+}

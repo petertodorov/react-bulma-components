@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="irradiance" transform="matrix(1,-5.55112e-17,5.55112e-17,1,1.99998,1.99632)">
+        <path d="M15,10.007L5,10.007L1.667,20.007L18.333,20.007L15,10.007ZM13.8,11.674L16.025,18.341L3.983,18.341L6.2,11.674L13.8,11.674ZM5.774,3.78L3.608,5.03L1.942,2.143L0.498,2.976L2.165,5.863L0,7.113L4.553,8.333L5.774,3.78ZM20,7.113L17.835,5.863L19.502,2.976L18.058,2.143L16.392,5.03L14.227,3.78L15.447,8.333L20,7.113ZM13.333,3.333L10.833,3.333L10.833,0L9.167,0L9.167,3.333L6.667,3.333L10,6.667L13.333,3.333Z" style="fill-rule:nonzero;"/>
+    </g>
+</svg>

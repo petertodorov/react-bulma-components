@@ -1,0 +1,18 @@
+// Control
+.control.has-icons-left,
+.control.has-icons-right {
+  .input.is-normal ~ .icon,
+  .select.is-normal ~ .icon {
+    font-size: $small-font-size;
+  }
+}
+
+// Field
+@include from($tablet) {
+  .field.is-horizontal.is-large {
+    margin-bottom: 1.5rem;
+    .field-label {
+      flex-grow: 2; /* overwrites previous value of 1 */
+    }
+  }
+}

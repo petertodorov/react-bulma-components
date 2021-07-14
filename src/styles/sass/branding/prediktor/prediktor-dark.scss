@@ -1,0 +1,141 @@
+@import '../commons.scss';
+@import 'variables.scss';
+
+// OVERITING GLOBAL VARIABLES
+// * General colors
+$scheme-main: $black-bis;
+$scheme-main-bis: $black-bis;
+$scheme-main-ter: $black-ter;
+
+$background: darken($grey-darker, 5%);
+$body-background-color: $black-ter;
+$shadow: 0px 0px 10px rgba($white, 0.3);
+
+$border: $grey-darker;
+$border-hover: $grey-dark;
+$border-light: $grey-darkest;
+$border-light-hover: $grey-dark;
+
+//* Text colors
+$text-invert: $grey-light;
+$text: $text-invert;
+$text-strong: $white-ter;
+$light: $grey-darker;
+$red: $red-darkMode;
+$danger: $red;
+$green: $green-darkMode;
+$success: $green;
+$info: $skyblue;
+
+//* Code colors
+$code: $grey-light;
+
+//* Link colors
+$link: $primary-darkMode;
+$link-hover: $white-ter;
+$link-hover-border: $grey;
+$link-focus: $grey-lighter;
+$link-focus-border: $grey;
+$link-active: $grey-lighter;
+$link-active-border: $grey-dark;
+
+//* Button
+$button-text-hover-background-color: $black-bis;
+
+//* Menu colors
+$menu-item-hover-color: $white-ter;
+$menu-item-hover-background-color: $blue-dark;
+$menu-item-active-color: $white;
+$menu-item-active-background-color: $blue-dark;
+
+//* Navbar colors
+$navbar-item-hover-color: $white-ter;
+$navbar-item-hover-background-color: rgba($primary, 0.4);
+$navbar-item-active-color: $white-ter;
+$navbar-dropdown-arrow: $white-ter;
+$navbar-dropdown-item-hover-color: $white-ter;
+$navbar-dropdown-border-top: 2px solid $primary;
+
+//* Message colors
+$message-body-color: $black;
+
+//* Modal
+$modal-background-background-color: rgba($black-bis, 0.95);
+$modal-card-head-background-color: $black-bis;
+$modal-card-head-border-bottom: 1px solid $black;
+$modal-card-body-background-color: $black-bis;
+$modal-card-foot-border-top: 1px solid $black;
+
+// Table colors
+$table-background-color: transparent;
+$table-row-active-color: $black-ter;
+$table-row-active-background-color: $primary-light;
+$table-row-hover-background-color: $black;
+$table-cell-color: $text;
+$table-cell-border: 1px solid $grey-darkest;
+$table-head-cell-color: $text;
+$table-head-cell-border-width: 0 0 2px;
+$table-striped-row-even-background-color: rgba($black, 0.5);
+$table-striped-row-even-hover-background-color: $black;
+
+// Tabs colors
+$tabs-link-color: $grey;
+$tabs-link-active-border-bottom-color: $blue;
+$tabs-border-bottom-color: $grey-darkest;
+$tabs-toggle-link-active-background-color: $blue-dark;
+$tabs-toggle-link-active-border-color: $blue-dark;
+$tabs-toggle-link-active-color: $white-ter;
+
+// Panel
+$panel-heading-background-color: $black-bis;
+$panel-block-hover-background-color: rgba($black-ter, 0.7);
+$panel-item-border: 1px solid $black;
+$panel-list-item-color: rgba($white-ter, 0.7);
+$panel-list-item-hover-color: $white-ter;
+
+// Form
+$label-weight: normal;
+
+// Input
+$input-placeholder-color: $grey;
+$input-focus-box-shadow-color: $primary-darkMode;
+
+// Card
+$card-header-color: $text;
+$card-header-shadow: inset 0 -1px 0 0 $black;
+$card-background-color: $black-bis;
+$card-footer-border-top: 1px solid $black;
+$card-shadow: 0 0 0 0.02em $grey-darker;
+
+// Breadcrumbs
+$breadcrumb-item-color: $grey;
+$breadcrumb-item-hover-color: $text;
+
+// Box
+$box-background-color: $black-bis;
+$box-shadow: $shadow;
+
+// Progress
+$progress-value-background-color: $blue-dark;
+
+// Dropdown
+$dropdown-content-background-color: $black-bis;
+$dropdown-content-shadow: $shadow;
+$dropdown-item-hover-background-color: $black-ter;
+$dropdown-item-hover-color: $white-ter;
+
+// Pagination
+$pagination-current-color: $black;
+
+// Content
+$content-heading-color: $text;
+
+// BULMA
+@import '~bulma/bulma.sass';
+
+// Quickview
+@import '~bulma-quickview/src/sass/index.sass';
+
+// CUSTOM
+$dark-mode: true;
+@import '../../includes/all.scss';

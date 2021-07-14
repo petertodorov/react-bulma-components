@@ -1,0 +1,10 @@
+aside.is-sticky {
+	top: 0;
+	bottom: 0;
+	overflow-y: auto;
+	display: inline-block;
+	height: 100vh;
+	.is-sticky {
+		z-index: 1;
+	}
+}

@@ -1,0 +1,25 @@
+.breadcrumb {
+  li, li:first-child {
+    .dropdown {
+      a.dropdown-item {
+        justify-content: normal;
+        padding: 0.375rem 0.5rem;
+        color: $dropdown-item-color;
+        i { opacity: 40%; }
+        &.is-active {
+          @if $light-mode {
+            background: rgba($primary-darkMode, 0.2);
+          } @else {
+            background: rgba($primary-darkMode, 0.5);
+          }
+        }
+      }
+    }
+  }
+  li + li::before {
+    font-weight: normal;
+  }
+  li.is-active a {
+    cursor: default !important;
+  }
+}

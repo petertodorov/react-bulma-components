@@ -1,0 +1,300 @@
+$button-sizes: ("large", "medium", "small", "smaller");
+
+
+// Buttons
+button.icon {
+	width: $control-height;
+	height: $control-height;
+	justify-content: center;
+	@each $name in $button-sizes {
+		&.is-#{$name} {
+			width: $control-height;
+			height: $control-height;
+		}
+	}
+	&:hover, .is-active {
+		transform: scale(1.04);
+	}
+	&.is-rounded {
+		padding: 0;
+	}
+	&.is-smallest {
+		border-radius: $radius-rounded;
+		height: 14px;
+		width: 14px;
+		&:hover {
+			transform: none !important;
+		}
+		i {
+			line-height: 150%;
+		}
+	}
+}
+
+.button {
+	&.is-small {
+		border-radius: $radius;
+		&.is-rounded {
+			border-radius: $radius-rounded;
+		}
+	}
+	&.is-smaller {
+		height: ($control-height - 0.5em);
+		min-width: 3em;
+		padding: ($button-padding-vertical / 2) ($button-padding-horizontal / 2);//0.3rem;
+		font-size: $size-8;
+		line-height: 1;
+	}
+}
+
+// Variation
+.button {
+	&[disabled], &.is-disabled { 
+		opacity: 0.5; 
+		pointer-events: unset;
+		cursor: no-drop;
+	}
+	&.is-outlined {
+		&:hover {
+			@if $dark-mode {
+				color: $white-ter;
+			} @else {
+				color: $black;
+			}
+		}
+		&.is-primary {
+			@if $dark-mode {
+				color: $primary-darkMode;
+				border-color: $primary-darkMode;
+			}
+		}
+		&.is-light {
+			color: $text;
+		}
+	}
+
+	&.is-light {
+		// default
+		@if $dark-mode {
+			background: $black;
+		} @else {
+			background: $grey-lightest;
+		}
+		&:hover, &:active, &:focus {
+			@include box-shadow(none);
+			@if $dark-mode {
+				background: lighten($black, 5%);
+			} @else {
+				background: darken($grey-lightest, 5%);
+			}	
+		}
+		&.is-active {
+			background: $primary;
+			color: $white;
+		}
+
+		$button-colors: mergeColorMaps((
+			"white": ($white, $black), 
+			"black": ($black, $white, $grey-lighter, $grey-darker), 
+			"light": ($light, $light-invert), 
+			"dark": ($dark, $dark-invert), 
+			"primary": ($primary, $primary-invert, $primary-lightest, $primary-dark), 
+			"link": ($link, $link-invert, $link-light, $link-dark), 
+			"info": ($info, $info-invert, $info-lightest, $info-dark), 
+			"success": ($success, $success-invert, $success-lightest, $success-dark), 
+			"warning": ($warning, $warning-invert, $warning-light, $warning-dark), 
+			"danger": ($danger, $danger-invert, $danger-light, $danger-dark)
+		), $custom-colors);
+
+		@each $name, $pair in $button-colors {
+			@if length($pair) >= 4 {
+				$color: nth($pair, 1);
+				$color-invert: nth($pair, 2);
+				$color-light: nth($pair, 3);
+				$color-dark: nth($pair, 4);
+				&.is-light {
+					&.is-#{$name} {
+						@if $dark-mode {
+							background-color: rgba($color, 0.4);
+							color: $color-light;
+							&:hover,
+							&.is-hovered {
+								background-color: rgba($color, 0.6);
+								color: $color-light;
+								&:active,
+								&.is-active {
+									background-color: rgba($color, 0.8);
+									color: $color-light;
+								}
+							}
+						} @else {
+							background-color: $color-light;
+							color: $color-dark;
+							&:hover,
+							&.is-hovered {
+								background-color: bulmaDarken($color-light, 2.5%);
+								color: $color-dark;
+								&:active,
+								&.is-active {
+									background-color: bulmaDarken($color-light, 5%);
+									color: $color-dark;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.is-link {
+		@if $dark-mode {
+			color: $white;
+			background: $primary;
+		}
+	}
+
+	&.is-success, 
+	&.is-danger,
+	&.is-info {
+		&:not(.is-outlined):not(.is-light), 
+		&:hover {
+			@if $dark-mode {
+        color: $black-ter;
+      } @else {
+        color: $white;
+      }
+		}
+	}
+
+	$custom-colors:(
+		"primary": ($primary, $primary-darkMode), 
+		"danger": ($danger, $danger-darkMode), 
+		"warning": ($warning, $warning), 
+		"success": ($success, $success-darkMode), 
+		"info": ($info, $info),
+		"light": ($light, $light),
+		"dark": ($dark, $dark),
+	);
+		
+	&.is-text, &.is-ghost {
+		@each $custom-name, $pair in $custom-colors {
+			$custom-color: nth($pair, 1);
+			$custom-color-darkMode: nth($pair, 2);
+			//$custom-color--hover: nth($pair, 3);
+			&.is-#{$custom-name} {
+				@if $dark-mode {
+					color: #{$custom-color-darkMode} !important;
+				} @else {
+					color: #{$custom-color} !important;
+				}
+				// &:hover {
+				// 	@if $dark-mode {
+				// 		color: #{$custom-color--hover} !important;
+				// 	} @else {
+				// 		color: #{$custom-color--hover} !important;
+				// 	}
+				// }
+			}
+		}
+		&.is-light {
+			color: rgba($text, 0.7) !important;
+		}
+	}
+
+	&.is-ghost {
+		color: $text;
+		background: transparent;
+		&:hover {
+			text-decoration: none;
+			border-width: 1px;
+			border-style: solid;
+			@if $dark-mode {
+				border-color: $primary-darkMode;
+			} @else {
+				border-color: $primary;
+			}
+			@each $custom-name, $pair in $custom-colors {
+				$custom-color: nth($pair, 1);
+				$custom-color-darkMode: nth($pair, 2);
+				&.is-#{$custom-name} {
+					@if $dark-mode {
+						background: #{$custom-color-darkMode} !important;
+						border-color: #{$custom-color-darkMode};
+						color: $black !important;
+					} @else {
+						background: #{$custom-color} !important;
+						border-color: #{$custom-color};
+						color: $white !important;
+					}
+				}	
+			}
+			&.is-light {
+				@if $dark-mode {
+					color: $white !important;
+				} @else {
+					color: $black !important;	
+				}
+			}
+		}
+	}
+
+	&.is-text {
+		text-decoration: none;
+		border: none;
+		background: transparent;
+		color: rgba($text, 0.7);
+		&:hover, &:focus, &:active, &.is-active {
+			@include box-shadow(none);
+			background: transparent;
+			color: $text;
+		}
+		&.is-primary {
+			// @if $dark-mode {
+			// 	color: $primary-darkMode;
+			// } @else {
+			// 	color: $primary;
+			// }
+			&:hover, &:active {
+				@if $dark-mode {
+					color: $white;
+				} @else {
+					color: $primary-dark;
+				}
+			}
+			&.is-active {
+				background: $primary !important;
+				color: $white;	
+			}
+		}
+		// &.is-danger {
+		// 	color: $danger !important;
+		// 	&:hover {
+		// 		color: $danger-dark !important;
+		// 	}
+		// }
+	}
+
+}
+
+.button {
+	&.icon, .icon {
+		i[class*="icon-"],
+		i[class*="mi-"] {
+			line-height: 100%;
+		}
+	}
+}
+
+// Delete button
+.modal-close,
+button.delete {
+	@if $dark-mode {
+		&:before, &:after {
+			background: $white;
+		}
+		&:hover {
+			background: $primary;
+		}
+	}
+}

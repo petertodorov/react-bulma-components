@@ -1,0 +1,82 @@
+@if $dark-mode {
+	.panel { 
+		background: $black-bis;
+	}
+}
+
+// Panel Navigation (PView: Left nav)
+@mixin panel-is-nav($bgColor, $bgColorActive, $bgTabs) {
+  .panel.is-nav {
+    background: $bgColor;
+    border-radius: 6px 0 0 6px;
+		padding-top: 0.25em;
+		padding-bottom: 0.25em;
+    box-shadow: none;
+    .panel-block {
+  		&.is-active {
+  			background: $bgColorActive;
+        .panel-icon {
+          color: $link;
+        }
+  		}
+    }
+    .tabs {
+      background: $bgTabs;
+      li.is-active a {
+        background: $bgColorActive;
+      }
+    }
+  }
+}
+
+@if $dark-mode {
+	@include panel-is-nav(
+		$bgColor: darken($black, 10%),
+		$bgColorActive: $black-bis,
+		$bgTabs: darken($black, 10%)
+	);
+} @else {
+	@include panel-is-nav(
+		$bgColor: $white-ter,
+		$bgColorActive: $white,
+		$bgTabs: lighten($grey-lighter, 5%)
+	);
+}
+
+// Panel List (Mapping: actions list)
+.panel--styleless {
+	border-radius: 0;
+	box-shadow: none;
+	background: transparent;
+	.panel-block {
+		border-radius: 0;
+		border: 0;
+	}
+}
+
+.panel-list {
+	.panel-block {
+		&.is-active {
+			background: $primary !important;
+			@include in-dark-mode;
+			@include icon-stack($primary-light, $white-ter);
+			i.fa-check {
+				color: $white-ter;
+			}
+			&.is-clickable {
+				cursor: initial !important;
+			}
+		}
+		&.is-previous {	
+			i.fa-check {
+				color: $success;
+			}
+		}
+		&.is-next {
+			opacity: 50%;
+			&:hover {
+				opacity: 100%;
+			}
+		}
+	}
+}

@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+// Theme
+$prediktor-theme: false !default;
+$scatec-theme: false !default;
+
+// Mode
+$dark-mode: false !default;
+$light-mode: false !default;
+
+// Icons
+$fontawesome: 'Font Awesome 5 Free';
+$fa-font-path: '/src/styles/fonts/FontAwesome';
+
+// @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+// @import '~@fortawesome/fontawesome-free/scss/solid.scss';
+// @import '~@fortawesome/fontawesome-free/scss/regular.scss';
+// @import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
+$material-icons-font-size: inherit;
+$material-icons-font-path: '/src/styles/fonts/MaterialIcons/';
+
+// I commented
+// @import '../includes/fonts/materialicons.scss';
+
+
+
+// $custom-icons-path: "../../../fonts/CustomIcons";
+// @import "../includes/fonts/icons.scss";
+
+$prediktor-icons-path: '/src/styles/fonts/Prediktor';
+@import '../includes/fonts/prediktoricons';
+
+// Colors
+$white: #fff;
+$grey-darkest: null !default;
+$grey-darker: null !default;
+$grey-dark: null !default;
+$grey: null !default;
+$grey-light: null !default;
+$grey-lighter: null !default;
+$grey-lightest: null !default;
+$primary-dark: null !default;
+$primary-darkMode: null !default;
+$primary-var: null !default;
+$primary-lighter: null !default;
+$primary-lightest: null !default;
+$success-light: null !default;
+$success-lighter: null !default;
+$success-lightest: null !default;
+$success-darkMode: null !default;
+$danger-darkMode: null !default;
+$info-lighter: null !default;
+$info-lightest: null !default;
+$livid-dark: null !default;
+$livid-lightest: null !default;
+
+// Responsiveness overwriting Bulma
+$gap: 32px !default;
+$mobile: 767px;
+$tablet: 768px;
+$desktop: 1024px + (2 * $gap);
+// $widescreen: 1152px + (2 * $gap) !default
+$fullhd: 1440px + (2 * $gap);
+
+// Other
+$body-overflow-y: unset !default;

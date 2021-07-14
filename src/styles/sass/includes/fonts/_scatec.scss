@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Work Sans Regular'),
+       url('#{$scatec-font-path}/WorkSans-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Work Sans Regular'),
+       url('#{$scatec-font-path}/WorkSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Work Sans'),
+       url('#{$scatec-font-path}/WorkSans-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Work Sans SemiBold'),
+       url('#{$scatec-font-path}/WorkSans-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+font-family: 'Work Sans';
+font-style: normal;
+font-weight: 700;
+src: local('Work Sans Bold'),
+     url('#{$scatec-font-path}/WorkSans-Bold.ttf') format('truetype');
+}

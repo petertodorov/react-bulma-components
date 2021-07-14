@@ -1,0 +1,175 @@
+// Animated arrows
+@mixin animated-arrows($bgColor) {
+	.arrowAnim {
+	  width: 25px;
+	  height: 4px;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+		background: $bgColor;
+		.arrow {
+		  width: 4px;
+		  height: 4px;
+		  border: 2px solid;
+			transform: rotate(-45deg);
+		}
+		.arrowSliding {
+		  position: absolute;
+		}
+	}
+}
+
+@mixin animated-arrows-left($bgColor) {
+	@include animated-arrows($bgColor);
+	.arrowAnim.arrows-left {
+		.arrow {
+			border-color: $success transparent transparent $success;
+		}
+		.arrowSliding {
+		  -webkit-animation: slideLeft 4s linear infinite;
+		          animation: slideLeft 4s linear infinite;
+		}
+		.delay1 {
+			-webkit-animation-delay: 1s;
+				animation-delay: 1s;
+		}
+		.delay2 {
+			-webkit-animation-delay: 2s;
+				animation-delay: 2s;
+		}
+		.delay3 {
+			-webkit-animation-delay: 3s;
+				animation-delay: 3s;
+		}
+	}
+	@-webkit-keyframes slideLeft {
+			0% { opacity:0; transform: translateX(12px); }
+		 20% { opacity:1; transform: translateX(6px); }
+		 80% { opacity:1; transform: translateX(-6px); }
+		100% { opacity:0; transform: translateX(-12px); }
+	}
+	@keyframes slideLeft {
+			0% { opacity:0; transform: translateX(12px); }
+		 20% { opacity:1; transform: translateX(6px); }
+		 80% { opacity:1; transform: translateX(-6px); }
+		100% { opacity:0; transform: translateX(-12px); }
+	}
+}
+
+@mixin animated-arrows-right($bgColor) {
+	@include animated-arrows($bgColor);
+	.arrowAnim.arrows-right {
+		margin-left: auto;
+		.arrow {
+			transform: rotate(-230deg);
+			border-color: $primary transparent transparent $primary;
+		}
+		.arrowSliding {
+			-webkit-animation: slideRight 4s linear infinite;
+							animation: slideRight 4s linear infinite;
+		}
+		.delay1 {
+			-webkit-animation-delay: 1s;
+				animation-delay: 1s;
+		}
+		.delay2 {
+			-webkit-animation-delay: 2s;
+				animation-delay: 2s;
+		}
+		.delay3 {
+			-webkit-animation-delay: 3s;
+				animation-delay: 3s;
+		}
+	}
+	@-webkit-keyframes slideRight {
+			0% { opacity:0; transform: translateX(-12px); }
+		 20% { opacity:1; transform: translateX(-6px); }
+		 80% { opacity:1; transform: translateX(6px); }
+		100% { opacity:0; transform: translateX(12px); }
+	}
+	@keyframes slideRight {
+			0% { opacity:0; transform: translateX(-12px); }
+		 20% { opacity:1; transform: translateX(-6px); }
+		 80% { opacity:1; transform: translateX(6px); }
+		100% { opacity:0; transform: translateX(12px); }
+	}
+}
+
+@mixin production-split($bgColor) {
+	@include animated-arrows-left($bgColor);
+	@include animated-arrows-right($bgColor);
+	.energy-flow {
+		display: flex;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+	.grid-to-factory {
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		bottom: -2px;
+		.energy-flow { background: $primary; }
+	}
+	.plant-to {
+		&-grid,
+		&-factory {
+			position: relative;
+			width: 50%;
+			height: 95%;
+			&:after {
+				content: "";
+				width: 4px;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+			}
+		}
+		&-grid {
+			margin-left: -2px;
+			&:after {
+				right: 0;
+				background: $success;
+			}
+			.energy-flow { background: $success; }
+		}
+		&-factory {
+			margin-right: -2px;
+			margin-left: auto;
+			&:after {
+				left: 0;
+				background: $primary;
+			}
+			.energy-flow { background: $primary; }
+		}
+	}
+}
+
+// is-loading class
+@-webkit-keyframes spinAround {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+@keyframes spinAround {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@if $dark-mode {
+	@include production-split($black-bis);
+} @else {
+	@include production-split($white);
+}

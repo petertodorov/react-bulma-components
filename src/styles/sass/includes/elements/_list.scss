@@ -1,0 +1,31 @@
+$block-list-separator: 0.25rem !default;
+
+.block-list {
+  list-style: none;
+  > li {
+    padding: ($gap / 2);
+    margin-bottom: $block-list-separator;
+    @if $dark-mode {
+      background: $black-bis;
+    } @else {
+      background: $white;
+    }
+  }
+  li.is-small,
+  &.is-small > li {
+    font-size: $small-font-size;
+    padding: ($gap / 3);
+  }
+  li.is-normal,
+  &.is-normal > li {
+    font-size: $body-font-size;
+  }
+  li.is-large,
+  &.is-large > li {
+    font-size: $size-large;
+  }
+  li.has-radius,
+  &.has-radius > li {
+    border-radius: $radius;
+  }
+}

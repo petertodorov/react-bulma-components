@@ -58,6 +58,9 @@ $content-heading-color: $text;
 // BULMA
 @import '~bulma/bulma.sass';
 
+// Quickview
+@import '~bulma-quickview/src/sass/index.sass';
+
 // CUSTOM
-// $light-mode: true;
-// @import '../../includes/all.scss';
+$light-mode: true;
+@import '../../includes/all.scss';

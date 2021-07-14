@@ -1,0 +1,94 @@
+// Map:Color
+$default-colors: (
+  "white": ($white, $white),
+  "black": ($black, $black),
+  "light": ($light, $light),
+  "dark": ($dark, $dark),
+  "primary": ($primary, $primary),
+  "link": ($link, $link),
+  "success": ($success, $success),
+  "danger": ($danger, $danger),
+  "warning": ($warning, $warning),
+  "info": ($info, $info),
+  "black-bis": ($black-bis, $black-bis),
+  "black-ter": ($black-ter, $black-ter),
+  "grey-darker": ($grey-darker, $grey-darker),
+  "grey-dark": ($grey-dark, $grey-dark),
+  "grey-lighter": ($grey-lighter, $grey-lighter),
+  "grey-light": ($grey-light, $grey-light),
+  "white-ter": ($white-ter, $white-ter),
+  "white-bis": ($white-ter, $white-ter),
+);
+
+// Map:Color custom
+$custom-colors: (
+  "grey": ($grey, $grey),
+  "grey-lightest": ($grey-lightest, $grey-lightest),
+  "primary-light": ($primary-light, $primary-light),
+  "primary-lighter": ($primary-lighter, $primary-lighter),
+  "primary-lightest": ($primary-lightest, $primary-lightest),
+  "success-light": ($success-light, $success-light),
+  "success-lighter": ($success-lighter, $success-lighter),
+  "success-lightest": ($success-lightest, $success-lightest),
+  "purple-dark":($purple-dark, $purple-dark),
+  "purple":($purple, $purple),
+  "purple-light":($purple-light, $purple-light),
+  "purple-lighter":($purple-lighter, $purple-lighter),
+  "purple-lightest":($purple-lightest, $purple-lightest),
+);
+
+// Map:Color mode
+$mode-colors: (
+  "white--black-bis": ($white, $black-bis),
+  "white--black-ter": ($white, $black-ter),
+  "white--black": ($white, $black),
+  "white-ter--black": ($white-ter, $black),
+  "white-ter--black-ter": ($white-ter, $black-ter),
+  "white-ter--black-bis": ($white-ter, $black-bis),
+  "grey-lightest--black": ($grey-lightest, $black),
+  "grey-lighter--grey-darker": ($grey-lighter, $grey-darker),
+  "grey-lighter--grey-dark": ($grey-lighter, $grey-dark),
+  "grey-lighter--black": ($grey-lighter, $black),
+  "grey-lighter--black-bis": ($grey-lighter, $black-bis),
+  "grey-light--grey-dark": ($grey-light, $grey-dark),
+  "grey-light--grey-darker": ($grey-light, $grey-darker),
+  "grey-light--black": ($grey-light, $black),
+  "grey-light--black-ter": ($grey-light, $black-ter),
+  "grey--grey-dark": ($grey, $grey-dark),
+  "grey-dark--grey": ($grey-dark, $grey),
+  "black--grey-light": ($black, $grey-light),
+  "success-lightest--success-90": ($success-lightest, rgba($success, 0.9)),
+  "success-lightest--success-20": ($success-lightest, rgba($success, 0.2)),
+);
+
+// Map:Color opacity
+$opacities: (
+  "5": 0.05,
+  "10": 0.1,
+  "20": 0.2,
+  "30": 0.3,
+  "40": 0.4,
+  "50": 0.5,
+  "60": 0.6,
+  "70": 0.7,
+  "80": 0.8,
+  "90": 0.9,
+);
+
+$dark-mode-opacity: 255, 255, 255;
+$light-mode-opacity: 0, 0, 0;
+
+// Map:Background Hover
+$background-hover: (
+  "light": ($white-ter, rgba($black, 0.2)),
+  "medium": (rgba($grey-lighter, 0.4), rgba($black, 0.6)),
+  "hard": ($grey-lightest, $black-bis),
+  "harder": ($grey-lightest, $black-ter),
+);
+
+// Map:Background Blurred
+$blurred-background: (
+  "white--black": (rgba($white, 0.7), rgba($black, 0.5)),
+  "white--black-bis":  (rgba($white, 0.7), rgba($black-bis, 0.5)),
+  "white-ter--black-ter":  (rgba($white-ter, 0.7), rgba($black-ter, 0.5)),
+);

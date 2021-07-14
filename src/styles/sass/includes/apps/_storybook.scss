@@ -1,0 +1,28 @@
+.docs-story {
+  @if $dark-mode {
+    background: $black-bis;
+  } @else {
+    background: $white;
+  }
+  button[class^="css-"] {
+    @if $dark-mode {
+      color: $grey-light;
+      background: $black;
+    } @else {
+      color: $black;
+      background: $grey-lighter;
+    }
+  }
+}
+
+.os-content code {
+  .tag {
+    display: inline;
+    background: transparent;
+    padding: 0;
+  }
+}
+
+#storybook-preview-iframe #root {
+  width: 100%;
+}

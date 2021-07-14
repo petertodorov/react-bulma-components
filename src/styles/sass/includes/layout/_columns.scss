@@ -1,0 +1,8 @@
+.columns {
+  &.is-multiline-tablet-only {
+    @include tablet-only {
+      flex-wrap: wrap;
+    }
+  }
+}
+    

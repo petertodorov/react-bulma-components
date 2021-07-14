@@ -1,0 +1,23 @@
+.donut {
+  &-value,
+  circle {
+    stroke-width: 5px;
+  }
+  circle {
+    @if $dark-mode {
+      stroke: $black;
+    } @else {
+      stroke: $grey-lighter;
+    }
+  }
+  &-value {
+    stroke: $success;
+  }
+  &-uom {
+    @if $dark-mode {
+      fill: $grey-dark;
+    } @else {
+      fill: $grey;
+    }
+  }
+}

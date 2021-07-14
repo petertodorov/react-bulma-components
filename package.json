@@ -20,7 +20,7 @@
     "test:cov": "eslint ./src && jest --coverage",
     "eslint": "eslint ./src",
     "coveralls": "cat ./.coverage/lcov.info | coveralls",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6008",
     "docs": "cd documentation && npm start",
     "clean:build": "rm -rf esm cjs",
     "build-storybook-static": "build-storybook -c .storybook -o .out",
@@ -58,7 +58,10 @@
   },
   "homepage": "https://react-bulma.dev",
   "dependencies": {
-    "classnames": "2.3.1"
+    "bulma-helpers": "^0.4.0",
+    "bulma-quickview": "^2.0.0",
+    "classnames": "2.3.1",
+    "material-icons": "^0.7.6"
   },
   "peerDependencies": {
     "bulma": ">=0.9.2",

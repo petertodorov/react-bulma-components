@@ -1,0 +1,55 @@
+// Typography Extend
+$size-larger: 5rem;
+$size-8: 0.65rem;
+$size-9: 0.5rem;
+$size-10: 0.4rem;
+$size-11: 0.3rem;
+
+.is {
+  &-size-0 {
+    font-size: $size-larger;
+  }
+  &-size-8 {
+    font-size: $size-8;
+  }
+  &-size-9 {
+    font-size: $size-9;
+  }
+  &-size-10 {
+    font-size: $size-10;
+  }
+  &-size-11 {
+    font-size: $size-11;
+  }
+  &-size-small {
+    font-size: $small-font-size !important;
+  }
+  &-truncated {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    overflow: hidden;
+  }
+  &-narrowed {
+    letter-spacing: -.5px;
+  }
+  &-loosed {
+    letter-spacing: .5px;
+  }
+  &-crazy {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-top: 2px solid rgba($danger, 0.8);
+      height: calc(50% - 1px);
+      width: 100%;
+      transform: rotateZ(-4deg);
+    }
+  }
+  &-strikethrough {
+    text-decoration: line-through;
+  }
+}

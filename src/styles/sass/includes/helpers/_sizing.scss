@@ -1,0 +1,40 @@
+.has {
+  &-width {
+    &-20 { width: 20px; }
+    &-36 { width: 36px; }
+    &-60 { width: 60px; }
+    &-70 { width: 70px; }
+		&-80 { width: 80px; }
+		&-100 {	width: 100px; }
+    &-120 { width: 120px; }
+  }
+  &-height {
+    &-10 { height: 10px; }
+    &-20 { height: 20px; }
+    &-30 { height: 30px; }
+    &-35 { height: 35px !important; }
+    &-36 { height: 36px !important; }
+    &-75 { height: 75px; }
+    &-auto { height: auto;
+      &-touch { @include touch { height: auto !important; }
+      }
+    }
+  }
+  &-min {
+    &-width-450 { min-width: 450px !important; }
+    &-width-500 { min-width: 500px !important; }
+    &-width-fit-content { min-width: fit-content !important; }
+    &-height-fit-content { min-height: fit-content !important; }
+    &-height-36 { min-height: 36px; }
+  }
+  &-max {
+    &-height-unset { max-height: unset !important; }
+    &-width-60-mobile { @include mobile { max-width: 60px; } }
+  }
+}
+
+@include desktop {
+  .is-narrow-desktop {
+    width: unset !important;
+  }
+}

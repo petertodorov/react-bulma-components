@@ -1,0 +1,28 @@
+// --East West South North (--ewsn)
+.graph__divider--ewsn {
+  position: relative;
+  z-index: 0;
+  &:before, &:after {
+    position: absolute;
+    content: "";
+    z-index: -1;
+  }
+  &:before {
+    width: 100%;
+    height: 50%;
+    @if $dark-mode {
+      border-bottom: 1px solid $black;
+    } @else {
+      border-bottom: 1px solid $grey-lighter;
+    } 
+  }
+  &:after {
+    width: 50%;
+    height: 100%;
+    @if $dark-mode {
+      border-right: 1px solid $black;
+    } @else {
+      border-right: 1px solid $grey-lighter;
+    }
+  }
+}

@@ -1,0 +1,143 @@
+@charset "utf-8";
+@import "../utilities/mixins.scss";
+@import "colors.scss";
+
+$divider-background-color: $border !default;
+$divider-margin-inner-size: 10px !default;
+
+.divider {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  &::after,
+  &::before {
+    content: '';
+    display: block;
+    flex: 1;
+    height: 1px;
+    background-color: $divider-background-color;
+  }
+  &:not(.is-right) {
+    &::after {
+      margin-left: $divider-margin-inner-size;
+    }
+  }
+  &:not(.is-left) {
+    &::before {
+      margin-right: $divider-margin-inner-size;
+    }
+  }
+  &--styleless {
+    &::after,
+    &::before { 
+      margin: 0 !important;
+    }
+  }
+  &.is-left {
+    &::before {
+      display: none;
+    }
+  } 
+  &.is-right {
+    &::after {
+      display: none;
+    }
+  }
+
+  &.is-vertical {
+    flex-direction: column;
+    &::after,
+    &::before {
+      height: auto;
+      width: 1px;
+    }
+    &::after {
+      margin-left: 0;
+      margin-top: $divider-margin-inner-size;
+    }
+    &::before {
+      margin-right: 0;
+      margin-bottom: $divider-margin-inner-size;
+    }
+  }
+
+  &.is-dashed {
+    &::before,
+    &::after {
+      background: transparent;
+      border-style: dashed;
+      border-width: 1px 0 0 0;
+      @if $dark-mode {
+        border-color: $grey-dark;
+      } @else {
+        border-color: $grey;
+      }
+    }
+  }
+
+  &.is-gradient {
+    $gradient-opacity: rgba($black, 0.2), transparent;
+    $gradient-opacity-dark-mode: rgba($white, 0.3), transparent;
+    $gradient-direction: (left, right, top, bottom);
+    @each $direction in $gradient-direction {
+      &-#{$direction}-opacity {
+        &::before,
+        &::after {
+          background: transparent;
+          @include linear-gradient($direction, $gradient-opacity);
+          @if $dark-mode {
+            @include linear-gradient($direction, $gradient-opacity-dark-mode);
+          }
+        }
+      }
+    }
+  }
+
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    &.is-#{$name} {
+      &::after,
+      &::before {
+        background-color: $color;
+      }
+
+      &.is-dashed {
+        &::after,
+        &::before {
+          border-color: $color;
+          background: transparent;
+        }
+      }
+    }
+  }
+
+  // Dark/light mode color helpers settings
+  @each $name, $pair in $mode-colors {
+    $light-mode-color: nth($pair, 1);
+    $dark-mode-color: nth($pair, 2);
+    &.is--#{$name} {
+      &::after,
+      &::before {
+        @if $dark-mode {
+          background: #{$dark-mode-color} !important;
+        } @else {
+          background: #{$light-mode-color} !important;
+        }
+      }
+
+      &.is-dashed {
+        &::after,
+        &::before {
+          background: transparent;
+          @if $dark-mode {
+            border-color: #{$dark-mode-color} !important;
+          } @else {
+            border-color: #{$light-mode-color} !important;
+          }
+        }
+      }
+    }
+  }
+
+}

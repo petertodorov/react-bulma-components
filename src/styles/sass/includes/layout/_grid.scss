@@ -1,0 +1,87 @@
+$gaps: (
+  "default": 1.5rem,
+  "small": 1rem,
+  "smaller": 0.5rem,
+  "smallest": 0.25rem,
+);
+
+.grid {
+  display: grid;
+  column-gap: map-get($gaps, "default");
+  row-gap: map-get($gaps, "default");
+  @each $name, $gap in $gaps {
+    &.has-gap-#{$name} {
+      column-gap: $gap;
+      row-gap: $gap;
+    }
+  }
+}
+.is-gapless {
+  column-gap: 0;
+  row-gap: 0;
+}
+
+$grid-columns: (
+  "8": "1fr",
+  "7": "1fr",
+  "6": "1fr",
+  "5": "1fr",
+  "4": "1fr",
+  "3": "1fr",
+  "2": "1fr",
+  "1": "1fr",
+);
+
+@each $property, $column in $grid-columns {
+  .grid {
+    &.is-#{$property} {
+      grid-template-columns: repeat(#{$property}, #{$column});
+    }
+  }
+}
+
+@include mobile {
+  @each $property, $column in $grid-columns {
+    .grid {
+      &.is-#{$property}-mobile {
+        grid-template-columns: repeat(#{$property}, #{$column});
+      }
+    }
+  }
+}
+@include tablet {
+  @each $property, $column in $grid-columns {
+    .grid {
+      &.is-#{$property}-tablet {
+        grid-template-columns: repeat(#{$property}, #{$column});
+      }
+    }
+  }
+}
+@include desktop {
+  @each $property, $column in $grid-columns {
+    .grid {
+      &.is-#{$property}-desktop {
+        grid-template-columns: repeat(#{$property}, #{$column});
+      }
+    }
+  }
+}
+@include widescreen {
+  @each $property, $column in $grid-columns {
+    .grid {
+      &.is-#{$property}-widescreen {
+        grid-template-columns: repeat(#{$property}, #{$column});
+      }
+    }
+  }
+}
+@include fullhd {
+  @each $property, $column in $grid-columns {
+    .grid {
+      &.is-#{$property}-fullhd {
+        grid-template-columns: repeat(#{$property}, #{$column});
+      }
+    }
+  }
+}

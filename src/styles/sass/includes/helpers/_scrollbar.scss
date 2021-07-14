@@ -1,0 +1,34 @@
+@mixin scrollbar($scrollbar-background, $thumb-background) {
+  // Firefox scrollbar styling
+  html {
+    scrollbar-color: $scrollbar-background $thumb-background;
+  }
+  //  Other Browsers scrollbar styling
+  body * {
+    scrollbar-width: thin;
+    scrollbar-color: $thumb-background $scrollbar-background;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    &-track {
+      background: $scrollbar-background;
+    }
+    &-thumb {
+      background-color: $thumb-background;
+      border-radius: 6px;
+    }
+  }
+}
+
+@if $dark-mode {
+  @include scrollbar(transparent, rgba($white, 0.1));
+  .rcs-inner-handle {
+    background-color: rgba($white, 0.1) !important;
+  }
+} @else {
+  @include scrollbar(transparent, rgba($black, 0.1));
+  .rcs-inner-handle {
+    background-color: rgba($black, 0.1) !important;
+  }
+}

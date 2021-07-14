@@ -1,0 +1,125 @@
+.browse .node {
+  .edge,
+  .child,
+  .actions {
+    visibility: hidden;
+  }
+  .node-name {
+    border-bottom-width: 0.1em;
+    border-bottom-style: solid;
+    outline: transparent solid 0.15rem;
+    transition: all 150ms ease 0s;
+    @if $dark-mode {
+      color: $text;
+      border-bottom-color: $grey-darker;
+    } @else {
+      color: $text;
+      border-bottom-color: $primary-lighter;
+    }
+    &:hover {
+      transition-duration: 50ms;
+      border-bottom-width: 0.4em;
+      @if $dark-mode {
+        color: $white;
+      } @else {
+        color: $link;
+      }
+    }
+  }
+  &:hover {
+    .edge,
+    .child,
+    .actions {
+      visibility: hidden;
+    }
+    &:hover {
+      .node-name {
+        transition-duration: 50ms;
+        border-bottom-width: 0.2em;
+        @if $dark-mode {
+          color: $white;
+        } @else {
+          color: $link;
+        }
+      }
+    }
+  }
+}
+
+.edit .node {
+  &:hover {
+    .edge,
+    .child {
+      visibility: visible;
+    }
+  }
+}
+
+.node {
+  .edge {
+    z-index: 2;
+    visibility: hidden;
+    @if $dark-mode {
+      cursor: url('/src/styles/images/mode/dark/cursor-edge.png'), auto !important;
+    } @else {
+      cursor: url('/src/styles/images/mode/light/cursor-edge.png'), auto !important;
+    }
+  }
+  &.is-editable,
+  &.from-edge,
+  &.to-edge {
+    .edge {
+      visibility: visible;
+    }
+  }
+  .actions,
+  .child {
+    visibility: hidden;
+  }
+  .node-content {
+    border: 1px solid transparent;
+    @extend .is-clickable;
+  }
+  &.is-editable {
+    .node-content {
+      border-color: $input-border-color;
+    }
+    .actions,
+    .child {
+      visibility: visible;
+    }
+  }
+  &.has-placeholder {
+    .node-content {
+      .node-name {
+        color: $input-placeholder-color;
+      }
+    }
+  }
+  &.to-edge {
+    .node-content {
+      position: relative;
+      border-color: $input-border-color;
+      &:before {
+        content: '';
+        @if $dark-mode {
+          background: rgba($black-bis, 0.6);
+        } @else {
+          background: rgba($white, 0.6);
+        }
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: block;
+        z-index: 1;
+        border-radius: $radius-rounded;
+      }
+      & > span {
+        @include blur(2px);
+      }
+      .is-xy-centered {
+        z-index: 2;
+      }
+    }
+  }
+}

@@ -1,0 +1,200 @@
+$icon-arrow-down: "\ea01";
+$icon-arrow-up: "\ea02";
+$icon-authorisation: "\ea03";
+$icon-availability: "\ea04";
+$icon-average: "\ea05";
+$icon-budget: "\ea06";
+$icon-bulma: "\ea07";
+$icon-capacity: "\ea08";
+$icon-co2: "\ea09";
+$icon-dancer: "\ea0a";
+$icon-decrease: "\ea0b";
+$icon-dust-sensor: "\ea0c";
+$icon-expand: "\ea0d";
+$icon-factory: "\ea0e";
+$icon-grafana: "\ea0f";
+$icon-grid: "\ea10";
+$icon-hexagon: "\ea11";
+$icon-humidity: "\ea12";
+$icon-increase: "\ea13";
+$icon-inverter: "\ea14";
+$icon-inverter-outlined: "\ea15";
+$icon-irradiance: "\ea16";
+$icon-kpi: "\ea17";
+$icon-map: "\ea18";
+$icon-outline: "\ea19";
+$icon-plant: "\ea1a";
+$icon-portal: "\ea1b";
+$icon-power-bi: "\ea1c";
+$icon-pr: "\ea1d";
+$icon-prediktor: "\ea1e";
+$icon-pview: "\ea1f";
+$icon-rain: "\ea20";
+$icon-scatec: "\ea21";
+$icon-service-requested: "\ea22";
+$icon-shape: "\ea23";
+$icon-shrink: "\ea24";
+$icon-solar-irradiance: "\ea25";
+$icon-string: "\ea26";
+$icon-tracker: "\ea27";
+$icon-tree: "\ea28";
+$icon-undock: "\ea29";
+$icon-weather: "\ea2a";
+
+@font-face {
+  font-family: "prediktor";
+  src: url("#{$prediktor-icons-path}/prediktor.eot");
+  src: url("#{$prediktor-icons-path}/prediktor.eot?#iefix") format("embedded-opentype"), 
+  url("#{$prediktor-icons-path}/prediktor.woff2") format("woff2"), 
+  url("#{$prediktor-icons-path}/prediktor.woff") format("woff"), 
+  url("#{$prediktor-icons-path}/prediktor.ttf") format("truetype"), 
+  url("#{$prediktor-icons-path}/prediktor.svg#prediktor") format("svg");
+  font-style: normal;
+  font-weight: 400;
+}
+
+%icon {
+  display: inline-block;
+  font-family: "prediktor" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  // speak: none;
+  line-height: 1;
+  vertical-align: -.125em;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  @extend %icon;
+}
+
+.icon-arrow-down::before {
+  content: "\ea01";
+}
+.icon-arrow-up::before {
+  content: "\ea02";
+}
+.icon-authorisation::before {
+  content: "\ea03";
+}
+.icon-availability::before {
+  content: "\ea04";
+}
+.icon-average::before {
+  content: "\ea05";
+}
+.icon-budget::before {
+  content: "\ea06";
+}
+.icon-bulma::before {
+  content: "\ea07";
+}
+.icon-capacity::before {
+  content: "\ea08";
+}
+.icon-co2::before {
+  content: "\ea09";
+}
+.icon-dancer::before {
+  content: "\ea0a";
+}
+.icon-decrease::before {
+  content: "\ea0b";
+}
+.icon-dust-sensor::before {
+  content: "\ea0c";
+}
+.icon-expand::before {
+  content: "\ea0d";
+}
+.icon-factory::before {
+  content: "\ea0e";
+}
+.icon-grafana::before {
+  content: "\ea0f";
+}
+.icon-grid::before {
+  content: "\ea10";
+}
+.icon-hexagon::before {
+  content: "\ea11";
+}
+.icon-humidity::before {
+  content: "\ea12";
+}
+.icon-increase::before {
+  content: "\ea13";
+}
+.icon-inverter::before {
+  content: "\ea14";
+}
+.icon-inverter-outlined::before {
+  content: "\ea15";
+}
+.icon-irradiance::before {
+  content: "\ea16";
+}
+.icon-kpi::before {
+  content: "\ea17";
+}
+.icon-map::before {
+  content: "\ea18";
+}
+.icon-outline::before {
+  content: "\ea19";
+}
+.icon-plant::before {
+  content: "\ea1a";
+}
+.icon-portal::before {
+  content: "\ea1b";
+}
+.icon-power-bi::before {
+  content: "\ea1c";
+}
+.icon-pr::before {
+  content: "\ea1d";
+}
+.icon-prediktor::before {
+  content: "\ea1e";
+}
+.icon-pview::before {
+  content: "\ea1f";
+}
+.icon-rain::before {
+  content: "\ea20";
+}
+.icon-scatec::before {
+  content: "\ea21";
+}
+.icon-service-requested::before {
+  content: "\ea22";
+}
+.icon-shape::before {
+  content: "\ea23";
+}
+.icon-shrink::before {
+  content: "\ea24";
+}
+.icon-solar-irradiance::before {
+  content: "\ea25";
+}
+.icon-string::before {
+  content: "\ea26";
+}
+.icon-tracker::before {
+  content: "\ea27";
+}
+.icon-tree::before {
+  content: "\ea28";
+}
+.icon-undock::before {
+  content: "\ea29";
+}
+.icon-weather::before {
+  content: "\ea2a";
+}

@@ -1,0 +1,136 @@
+// Chart sizes
+.chart {
+  position: relative;
+  &.is-small {
+    height: 4.5rem;
+  }
+  &.is-medium {
+    height: 8rem;
+  }
+  &.is-large {
+    height: 15rem;
+  }
+  &.is-larger {
+    height: 20rem;
+  }
+  &.is-full {
+    height: 100%;
+  }
+  &.is-square {
+    &.is-small {
+      width: 4.5rem;
+    }
+    &.is-medium {
+      width: 8rem;
+    }
+  }
+}
+
+@include until($tablet) {
+  .chart {
+    &.is-large-mobile {
+      height: 15rem;
+    }
+  }
+}
+// Font sizes
+$default: 14px;
+$small: 12px;
+$smaller: 10px;
+
+// Text
+.apexcharts-text {
+  font-family: $family-sans-serif !important;
+  fill: $white;
+	&.apexcharts-yaxis-label,
+	&.apexcharts-xaxis-label  {
+		font-family: $family-sans-serif;
+		font-size: $smaller;
+    font-weight: 400;
+    @if $dark-mode {
+      fill: $grey;
+    } @else {
+      fill: $grey-darker;
+    }
+	}
+}
+
+.apexcharts-datalabel {
+	font-family: $family-sans-serif;
+	text-shadow: 0 0 5px $black-bis;
+}
+
+.apexcharts-legend-text {
+  color: $grey !important;
+}
+
+// XY axis
+.apexcharts {
+	&-gridline,
+	&-xaxis-tick,
+	&-xaxis line,
+	&-xaxis-inversed line {
+    stroke-width: 0.05em;
+    @if $dark-mode {
+      stroke: $grey-darkest;
+    } @else {
+      stroke: $grey-lighter;
+    }
+	}
+}
+
+// Tooltip
+.apexcharts-tooltip {
+	color: $black;
+	.apexcharts-tooltip-title {
+		font-family: $family-sans-serif;
+	}
+}
+
+.apexcharts-bar-series.apexcharts-series {
+	background-color: pink;
+	border-color: green;
+	color: purple;
+	fill: rosybrown;
+}
+
+/* MixedLineAndBar Chart */
+.mixed-chart {
+	&--item {
+		border: 1px solid $black;
+		&:hover,
+		&.is-active {
+			border-color: $grey;
+			background: rgba($white, 0.05);
+		}
+	}
+  &--graph {
+    position: absolute;
+    bottom: 0;
+  }
+	label {
+		font-size: $default;
+		text-align: left !important;
+		position: absolute;
+		top: 0;
+		left: 0;
+    padding: 2px 0 0 7px;
+	}
+}
+
+@include until($tablet) {
+  .mixed-chart label {
+    font-size: $smaller;
+  }
+}
+
+/* Availabity graph on Plant Dashboard grid. Need to review */
+.apexcharts-track .apexcharts-radialbar-area {
+  stroke: $black;
+}
+
+.has-background-danger {
+  .apexcharts-track .apexcharts-radialbar-area {
+    stroke: $red;
+  }
+}

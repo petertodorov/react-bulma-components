@@ -1,0 +1,207 @@
+@mixin worldmap(
+  $nightFill,
+  $nightStroke,
+  $geographyFill,
+  $geographyStroke,
+  $geographyActiveFill,
+  $markerFill,
+  $markerStroke,
+  $markerAnimation
+) {
+  .worldmap {
+    &-night {
+      fill: $nightFill;
+      stroke: $nightStroke;
+      stroke-width: 2;
+    }
+    .rsm-geography {
+      fill: $geographyFill;
+      stroke: $geographyStroke;
+      outline: none;
+      &:hover,
+      &.is-active {
+        fill: $geographyActiveFill;
+      }
+    }
+    &-marker {
+      circle { 
+        fill: $markerFill;
+        stroke: $markerStroke;
+        stroke-width: 0.3px;
+      }
+      &.is-active {
+        circle {
+          stroke: $markerStroke;
+          stroke-width: 8px;
+          animation-duration: 2s;
+          animation-name: pulse;
+          animation-iteration-count: infinite;
+        }
+      }
+    }
+  }
+  @keyframes pulse {
+    0% {
+      stroke: $markerAnimation;
+      stroke-opacity: 0.5;
+      transform: scale(0.95);
+    }
+    70% {
+      stroke: $markerAnimation;
+      stroke-opacity: 0;
+      transform: scale(1);
+    }
+    100% {
+      stroke: $markerAnimation;
+      stroke-opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+}
+
+.worldmap {
+  &-info {
+    position: relative;
+    @if $dark-mode {
+      background:rgba(0, 0, 0, 0.7);
+      @include box-shadow(0 0 5px rgba($white, 0.2));
+    } @else {
+      background: rgba($white, 0.7);
+      @include box-shadow(0 0 5px rgba($black, 0.2));
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 6px;
+      @include is-y-centered;
+      left: auto;
+      right: 0;
+      margin-left: auto;
+      margin-right: -12px;
+      @if $dark-mode {
+        border-color: transparent transparent transparent rgba(0, 0, 0, 0.7);
+      } @else {
+        border-color: transparent transparent transparent rgba($white, 0.7);
+      }
+    }
+  }
+
+  // Gradient
+  $prediktor-gradient: ($white-ter, $white-ter);
+  $prediktor-gradient-dark-mode: ($black, $black-ter);
+  $scatec-gradient: ($primary-var, $primary);
+  $direction: right;
+
+  // Background
+  $prediktor-background: (
+    "theme--1": ($black-bis, $livid-lightest),
+    "theme--2": ($black-bis, $livid-lightest),
+    "theme--3": (rgba($grey, 0.1), $white-ter),
+  );
+  $scatec-background: (
+    "theme--1": ($primary),
+    "theme--2": ($primary-lightest),
+    "theme--3": ($white-ter),
+  );
+
+  // Color
+  $prediktor-color: (
+    "theme--1": ($grey-light, $black),
+  );
+  $scatec-color: (
+    "theme--1": ($primary),
+  );
+
+  @if $prediktor-theme {
+    @if $light-mode {
+      background: $white;
+    }
+    .has-gradient-theme--1 {
+      @if $dark-mode {
+        @include linear-gradient($direction, $prediktor-gradient-dark-mode);
+      } @else {
+        @include linear-gradient($direction, $prediktor-gradient);
+        color: $black;
+        & * { color: $black; }
+        @extend .has-shadow--smaller;
+      }
+    }
+    @each $variation-name, $pair in $prediktor-background {
+      .has-background-#{$variation-name} { 
+        $prediktor-dark: nth($pair, 1);
+        $prediktor-light: nth($pair, 2); 
+        @if $dark-mode {
+          background: #{$prediktor-dark} !important;
+        } @else {
+          background: #{$prediktor-light} !important;
+        }
+      }
+    }
+    @each $variation-name, $pair in $prediktor-color {
+      .has-text-#{$variation-name} {
+        $prediktor-dark: nth($pair, 1);
+        $prediktor-light: nth($pair, 2); 
+        @if $dark-mode {
+          color: #{$prediktor-dark} !important;
+        } @else {
+          color: #{$prediktor-light} !important;
+        }
+      }
+    }
+    // Worldmap svg
+    @if $dark-mode {
+      @include worldmap(
+        $nightFill: rgba($black-ter, 0.5),
+        $nightStroke: rgba($black-bis, 0.4),
+        $geographyFill: $grey-darker,
+        $geographyStroke: rgba($black-bis, 0.5),
+        $geographyActiveFill: $grey-dark,
+        $markerFill: $blue-darkMode,
+        $markerStroke: $black-bis,
+        $markerAnimation: $white
+      );
+    } @else {
+      @include worldmap(
+        $nightFill: rgba($grey-lighter, 0.5),
+        $nightStroke: rgba($white, 0.4),
+        $geographyFill: $grey-lighter,
+        $geographyStroke: rgba($white, 0.5),
+        $geographyActiveFill: $blue-lightest,
+        $markerFill: $primary,
+        $markerStroke: $white,
+        $markerAnimation: $primary
+      );
+    }
+  }
+
+  @if $scatec-theme {
+    .has-gradient-theme--1 {
+      @include linear-gradient($direction, $scatec-gradient);
+    }
+    @each $variation-name, $pair in $scatec-background {
+      .has-background-#{$variation-name} {
+        $scatec-light: nth($pair, 1);  
+        background: #{$scatec-light} !important;
+      }
+    }
+    @each $variation-name, $pair in $scatec-color {
+      .has-text-#{$variation-name} {
+        $scatec-light: nth($pair, 1);  
+        color: #{$scatec-light} !important;
+      }
+    }
+    // Worldmap svg
+    @include worldmap(
+      $nightFill: rgba($grey-light, 0.4),
+      $nightStroke: rgba($white, 0.4),
+      $geographyFill: $grey-light,
+      $geographyStroke: rgba($white, 0.5),
+      $geographyActiveFill: $success,
+      $markerFill: $primary,
+      $markerStroke: $white,
+      $markerAnimation: $primary
+    );
+  }
+
+}

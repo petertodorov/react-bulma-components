@@ -1,0 +1,70 @@
+// Lobby
+.card {
+	.image--brand {
+		margin-top: -32px;
+	}
+}
+
+// Generate Report
+@mixin template($bg, $bgSelected, $colorShape, $colorShapeSelected) {
+  .template {
+    background: $bg;
+    position: relative;
+    cursor: pointer;
+    padding: $spacing-4 $spacing-3 0 $spacing-3;
+    border-radius: $radius;
+    overflow: hidden;
+    font-weight: $weight-medium;
+    @include box-shadow(none);
+    small {
+      font-size: $size-8;
+      @extend .has-text-opacity--70;
+      font-weight: $weight-normal;
+    }
+    i {
+      @extend .has-text-opacity--70;
+      font-size: $size-5;
+    }
+    &:after {
+      content: $icon-shape;
+      font-family: "prediktor";
+      right: -12px;
+      bottom: -12px;
+      font-size: 3.8rem;
+      opacity: 0.5;
+      color: $colorShape;
+      position: absolute;
+      display: block;
+      line-height: 1;
+      z-index: 0;
+    }
+    &:hover,
+    &.is-selected {
+      color: $white;
+      background: $bgSelected;
+      &:after {
+        opacity: 0.15;
+        color: $colorShapeSelected;
+      }
+      small, i {
+        color: rgba(white, 0.7);
+      }
+    }
+  }
+}
+
+@if $dark-mode {
+  @include template(
+    $bg: $black,
+    $bgSelected: $primary,
+    $colorShape: $grey-darker,
+    $colorShapeSelected: $white
+  );
+} @else {
+  @include template(
+    $bg: $grey-lightest,
+    $bgSelected: $primary,
+    $colorShape: $grey-lighter,
+    $colorShapeSelected: $white
+  );
+}

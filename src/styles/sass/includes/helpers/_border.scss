@@ -1,0 +1,147 @@
+@import "colors.scss";
+
+// Sides helpers settings
+$sides: (top, bottom, left, right);
+
+@each $side in $sides {
+  .is-#{$side}-borderless {
+    border-#{$side}: 0px !important;
+  }
+  .has-border-#{$side}-dashed {
+    border-#{$side}-style: dashed !important;
+  }
+}
+
+// Sizing helpers settings
+$range-start: 1;
+$range-end: 3;
+$interval: 1;
+
+$current: $range-start;
+@while $current <= $range-end {
+  .has-border-width-#{$current} {
+    border-width: #{$current}px !important;
+  }
+  @if $sides {
+    @each $side in $sides {
+      .has-border-#{$side}-width-#{$current} {
+        border-#{$side}-width: #{$current}px !important;
+      }
+    }
+  } @else {
+    .has-border-width-#{$current} {
+      border-width: #{$current}px !important;
+    }
+  }
+  $current: $current + $interval;
+}
+
+// Colors helpers settings
+@each $name, $pair in $default-colors {
+  $color: nth($pair, 1);
+  @each $side in $sides {
+    .has-border-#{$side}-#{$name} {
+      border-#{$side}-style: solid !important;
+      border-#{$side}-color: #{$color} !important;
+    }
+    .has-border-#{$side}-dashed {
+      border-#{$side}-style: dashed !important;
+    }
+  }
+  // all sides
+  .has-border-#{$name} {
+    border-style: solid;
+    border-color: #{$color} !important;
+  }
+}
+
+@each $name, $pair in $custom-colors {
+  $color: nth($pair, 1);
+  @each $side in $sides {
+    .has-border-#{$side}-#{$name} {
+      border-#{$side}-style: solid !important;
+      border-#{$side}-color: #{$color} !important;
+    }
+    .has-border-#{$side}-dashed {
+      border-#{$side}-style: dashed !important;
+    }
+    .has-border-#{$side}-transparent {
+      border-#{$side}-style: solid;
+      border-#{$side}-color: transparent !important;
+    }
+  }
+  // all sides
+  .has-border-#{$name} {
+    border-style: solid;
+    border-color: #{$color} !important;
+  }
+}
+
+// Dark/light mode helpers settings 
+@each $name, $pair in $mode-colors {
+  $light-mode-color: nth($pair, 1);
+  $dark-mode-color: nth($pair, 2);
+  @each $side in $sides {
+    .has-border-#{$side}--#{$name} {
+      border-#{$side}-style: solid !important;
+      @if $dark-mode {
+        border-#{$side}-color: #{$dark-mode-color} !important;
+      } @else {
+        border-#{$side}-color: #{$light-mode-color} !important;
+      }
+    }
+  }
+  // all sides
+  .has-border--#{$name} {
+    border-style: solid;
+    @if $dark-mode {
+      border-color: #{$dark-mode-color} !important;
+    } @else {
+      border-color: #{$light-mode-color} !important;
+    }
+  }
+}
+
+// Opacity helpers settings
+@each $name, $opacity-value in $opacities {
+  @each $side in $sides {
+    .has-border-#{$side}-opacity--#{$name} {
+      border-#{$side}-style: solid;
+      @if $dark-mode {
+        border-#{$side}-color: RGBA($dark-mode-opacity, #{$opacity-value}) !important;
+      } @else {
+        border-#{$side}-color: RGBA($light-mode-opacity, #{$opacity-value}) !important;
+      }
+    }
+  }
+  // all sides
+  .has-border-opacity--#{$name} {
+    border-style: solid;
+    @if $dark-mode {
+      border-color: RGBA($dark-mode-opacity, #{$opacity-value}) !important;
+    } @else {
+      border-color: RGBA($light-mode-opacity, #{$opacity-value}) !important;
+    }
+  }
+}
+
+// Border Diagonal
+@mixin border-diagonal($deg, $color-lightMode, $color-darkMode) {
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @if $dark-mode {
+      background: linear-gradient($deg, transparent 49%, $color-darkMode 50%, transparent 51%);
+    } @else {
+      background: linear-gradient($deg, transparent 49%, $color-lightMode 50%, transparent 51%);
+    }
+  }
+}
+
+.has-border-diagonal {
+  @include border-diagonal(-27deg, $grey-lighter, $black);
+}

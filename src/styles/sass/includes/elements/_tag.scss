@@ -1,0 +1,23 @@
+$height-small: 1.66em;
+
+.tag:not(body) {
+	&.is-small {
+		height: $height-small;
+	}
+	@if $dark-mode {
+		&.is-danger, 
+		&.is-success,
+		&.is-link,
+		&.is-info {
+			color: $black;
+		}
+	}
+}
+
+.tags {
+	&.are-small {
+		.tag:not(body) {
+			height: $height-small;
+		}
+	}
+}

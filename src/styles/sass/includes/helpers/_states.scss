@@ -1,0 +1,27 @@
+.hover {
+  &\:text-primary {
+    &:hover {
+      @if $dark-mode {
+        color: $primary-darkMode !important;
+      } @else {
+        color: $primary !important;
+      }
+    }
+  }
+
+  &\:border-primary:hover {
+    @if $dark-mode {
+      border-color: $primary-darkMode !important;
+    } @else {
+      border-color: $primary !important;
+    }
+  }
+
+  &\:bg-primary:hover {
+    @if $dark-mode {
+      background: $primary-darkMode !important;
+    } @else {
+      background: $primary !important;
+    }
+  }
+}

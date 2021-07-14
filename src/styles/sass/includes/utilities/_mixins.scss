@@ -1,0 +1,134 @@
+@mixin transition($value: all 0.2s ease-in) {
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -o-transition: $value;
+  transition: $value;
+}
+
+@mixin transform($value) {
+  -webkit-transform: $value !important;
+  -ms-transform: $value !important;
+  transform: $value !important;
+}
+
+@mixin box-shadow($value) {
+  -webkit-box-shadow: $value !important;
+  -moz-box-shadow: $value !important;
+  box-shadow: $value !important;
+  // $value: $top $left $blur $spread $color;
+}
+
+@mixin linear-gradient($direction, $list) { 
+  background-image: -webkit-linear-gradient(to $direction, $list);
+  background-image: -moz-linear-gradient(to $direction, $list);
+  background-image: -o-linear-gradient(to $direction, $list);
+  background-image: linear-gradient(to $direction, $list);
+}
+
+@mixin in-dark-mode {
+  $dark-mode: true;
+  color: $white-ter;
+  & * { color: $white-ter; }
+}
+
+@mixin in-light-mode {
+  $light-mode: true;
+  color: $black;
+  & * { color: $black; }
+}
+
+// Works for absolute positioned element only
+@mixin is-x-centered($value: 50%) {
+  left: $value;
+  @include transform(translateX(-$value));
+}
+
+@mixin is-y-centered($value: 50%) {
+  top: $value !important;
+  @include transform(translateY(-$value));
+}
+
+@mixin is-xy-centered($value: 50%) {
+  left: $value;
+  top: $value;
+  @include transform(translate(-$value, -$value));
+}
+
+// Background blur
+@mixin blur($value) {
+  filter: blur($value);
+}
+
+// Background stripes
+@mixin stripes(
+  $colorDark: rgba($white, 0.4),
+  $colorLight: rgba($black, 0.3)
+  ) {
+  position: relative;
+  z-index: 0;
+  &:after {
+    content: "";
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: 6px 6px;
+    @if $dark-mode {
+      background-image: linear-gradient(
+        -45deg,
+        transparent 46%,
+        $colorDark 49%,
+        $colorDark 51%,
+        transparent 55%
+      );
+    } @else {
+        background-image: linear-gradient(
+        -45deg,
+        transparent 46%,
+        $colorLight 49%,
+        $colorLight 51%,
+        transparent 55%
+      );
+    }
+  }
+}
+
+// Tree
+@mixin tree($dashedLeft) {
+	content: "";
+	border-left: 1px dashed;
+	position: absolute;
+	left: $dashedLeft;
+	top: 0;
+  bottom: -2px;
+  @if $dark-mode {
+    color: $grey-darker;
+  } @else {
+    color: $grey-light;
+  }
+}
+
+@mixin tree-level--1($dashedLeft: 1.25em, $paddingLeft: 2.4em) {
+	position: relative;
+  padding-left: $paddingLeft;
+	&:before {
+		@include tree($dashedLeft);
+	}
+}
+
+@mixin tree-level--2($dashedLeft: 2.9em, $paddingLeft: 4.2em) {
+  padding-left: $paddingLeft;
+	&:after {
+		@include tree($dashedLeft);
+	}
+}
+
+// Icon stack
+@mixin icon-stack($color, $colorInverted) {
+  .fa-stack {
+    &-2x { color: $color; }
+    &-1x { color: $colorInverted; }
+  }
+}

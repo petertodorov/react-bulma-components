@@ -1,0 +1,24 @@
+code {
+  &.is-custom, &.is-extension {
+    position: relative;
+    &:after {
+      content: "\f069";
+      font-family: $fontawesome;
+      font-weight: 900;
+      font-size: 70%;
+      top: 5px;
+      right: -20px;
+      position: absolute;
+    }
+  }
+  &.is-custom {
+    &:after {
+      color: $danger;
+    }
+  }
+  &.is-extension {
+    &:after {
+      color: $info;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+// Screens
+@mixin screen($colorHover, $borderDashed, $colorIcon) {
+  a.screen {
+  	&:hover,
+  	&.is-active {
+  		.image {
+  			border: 1px solid transparent;
+  			outline: 2px solid $colorHover;
+  		}
+  		.text {
+  			visibility: visible;
+  		}
+  	}
+  }
+  .card.is-screen {
+    .dropdown {
+      visibility: hidden;
+    }
+    &:hover,
+    &.is-active {
+      outline: 2px solid $colorHover;
+      .dropdown {
+        visibility: visible;
+      }
+    }
+    &.is-new {
+      border: 2px dashed $borderDashed;
+      box-shadow: none;
+      .icon, .text {
+        color: $colorIcon;
+      }
+      &:hover {
+        border: 1px solid transparent;
+        outline: 2px dashed $colorHover;
+        .icon, .text {
+          color: $colorHover;
+        }
+      }
+    }
+  }
+	.card.is-graph {
+		&.is-selected,
+		&:hover {
+			outline: 1px solid $white-ter;
+		}
+	}
+	.card.is-clickable {
+		&:hover {
+			box-shadow: 0 0 0 0.03em $colorIcon;
+		}
+	}
+}
+
+@if $dark-mode {
+  @include screen(
+    $primary-darkMode,
+    $borderDashed: $grey-darker,
+    $colorIcon: $grey
+  );
+} @else {
+  @include screen(
+    $primary,
+    $borderDashed: $grey-light,
+    $colorIcon: $grey);
+}

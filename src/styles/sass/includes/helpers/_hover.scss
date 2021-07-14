@@ -1,0 +1,26 @@
+.on-hover {
+  .on-hover--show {
+    opacity: 0 !important;
+    @extend .is-clickable;
+    &-display {
+      display: none !important;
+    }
+  }
+  &:hover {
+    .on-hover--show {
+      opacity: 1 !important;
+      &-display {
+        display: block !important;
+        &.button {
+          display: inline-flex !important;
+        }
+      }
+    }
+    .on-hover--hide {
+      opacity: 0 !important;
+      &-display {
+        display: none !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+@mixin chart__performance(
+	$heightAbove: 66.6%,
+	$heightBelow: 33.3%,
+	$margin: 0.25rem,
+	$margin-touch: 0.1rem,
+	$width: 0.45rem,
+	$width-touch: 0.25rem
+) {
+	.chart__performance {
+		@include stripes();
+		&:after {
+			border-top: 1px solid $warning;
+			@if $dark-mode {
+				border-bottom: 1px solid rgba($white, 0.2);
+			} @else {
+				border-bottom: 1px solid rgba($black, 0.2);
+			}
+			top: $heightBelow;
+			height: $heightBelow;
+		}
+		&-item {
+			margin-right: $margin;
+			@include touch {
+				margin-right: $margin-touch;
+			}
+			display: flex;
+			height: $heightAbove;
+			div {
+				width: $width;
+				@include touch {
+					width: $width-touch;
+				}
+			}
+			&:hover,
+			&.is--not-available,
+			&.is--outrange {
+				&:before {
+					content: "";
+					position: absolute;
+					@if $dark-mode {
+						background: rgba($white, 0.2);
+					} @else {
+						background: rgba($black, 0.2);
+					}
+					display: block;
+					width: $width;
+					height: 100%;
+					top: 0;
+					@include touch {
+						width: $width-touch;
+					}
+				}
+			}
+			&.is--increased {
+				div {
+					background: $success;
+					align-self: flex-end;
+					&:hover {
+						background: lighten($success, 3%);
+					}
+				}
+			}
+			&.is--inrange {
+				div {
+					background: $primary;
+					align-self: flex-end;
+					&:hover {
+						background: lighten($primary, 3%);
+					}
+				}
+			}
+			&.is--decreased {
+				height: $heightBelow;
+				margin-top: auto;
+				div {
+					align-self: flex-start;
+					background: $danger;
+					&:hover {
+						background: ligthen($danger, 3%);
+					}
+				}
+			}
+			&.is--outrange {
+				&:before {
+					outline: 1px solid rgba($danger, 0.7);
+					background: rgba(255, 255, 255, 0.05);
+				}
+			}
+		}
+		&-label {
+			display: flex;
+			height: $heightBelow;
+			span {
+				margin: auto $margin auto auto;
+			}
+		}
+	}
+}
+
+@include chart__performance();

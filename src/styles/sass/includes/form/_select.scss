@@ -1,0 +1,28 @@
+.select:not(.is-multiple):not(.is-loading)::after {
+  border-width: 2px;
+  border-color: $grey;
+}
+
+.select {
+  &.is-smaller {
+    height: 2em;
+    font-size: 0.75em;
+    select {
+      height: 2em;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-right: 1.4em;
+      font-size: inherit;
+    }
+    &:not(.is-multiple):not(.is-loading) {
+      &:after {
+        border-width: 1px;
+        border-radius: 0;
+        right: 0.8em;
+        width: 0.325em;
+        height: 0.325em;
+        margin-top: -0.1375em;
+      }
+    }
+  }
+}
