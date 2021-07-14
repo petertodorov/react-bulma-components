@@ -5,6 +5,7 @@ import { QuickviewButton } from './Components/QuickviewButton.tsx';
 
 export const Default = () => {
   const quickviewId = 'quickviewPlant';
+  const visibility = true;
   return (
     <>
       <QuickviewButton
@@ -14,7 +15,7 @@ export const Default = () => {
         label="Signals"
         icon="fas fa-eye"
       />
-      <QuickviewPlant quickviewId={quickviewId} isVisible />
+      <QuickviewPlant quickviewId={quickviewId} isVisible={visibility} />
     </>
   );
 };
