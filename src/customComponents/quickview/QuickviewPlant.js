@@ -5,6 +5,7 @@ import { PanelBlockSelectAll } from './Components/PanelBlockSelectAll.tsx';
 
 import { Panel, Tabs } from '../..';
 import { TabSignals } from './Components/Tabs/content/TabSignals';
+import { TabParameters } from './Components/Tabs/content/TabParameters';
 
 interface QuickviewProps {
   quickviewId: string;
@@ -31,6 +32,7 @@ export const QuickviewPlant: React.FC<QuickviewProps> = ({
           </li>
         </Tabs>
         <TabSignals />
+        <TabParameters />
       </Panel>
     </div>
   );
